@@ -1,272 +1,361 @@
-/* =========================================================
-   CONFIGURAÇÕES
-========================================================= */
-
-const WHATSAPP_NUMBER = "5547997560445";
-
-function openWhatsApp(message) {
-    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
-
-    window.open(url, "_blank", "noopener,noreferrer");
-}
-
-
-/* =========================================================
-   PRELOADER
-========================================================= */
+/* ================= PRELOADER ================= */
 
 window.addEventListener("load", () => {
-
     const preloader = document.getElementById("preloader");
 
-    if (!preloader) return;
-
-    setTimeout(() => {
-        preloader.classList.add("hide");
-    }, 700);
-
+    if (preloader) {
+        setTimeout(() => {
+            preloader.classList.add("hide");
+        }, 700);
+    }
 });
 
 
-/* =========================================================
-   MENU MOBILE
-========================================================= */
+/* ================= MENU MOBILE ================= */
 
-const menuToggle = document.getElementById("menuToggle");
-const nav = document.getElementById("nav");
+const menuToggle = document.getElementById("menu-toggle");
+const navMenu = document.querySelector(".nav");
 
-if (menuToggle && nav) {
-
+if (menuToggle && navMenu) {
     menuToggle.addEventListener("click", () => {
-
-        nav.classList.toggle("active");
         menuToggle.classList.toggle("active");
-
+        navMenu.classList.toggle("active");
     });
 
-
-    /* Fechar menu ao clicar em um link */
-
+    // Fecha o menu ao clicar em um link
     document.querySelectorAll(".nav a").forEach(link => {
-
         link.addEventListener("click", () => {
-
-            nav.classList.remove("active");
             menuToggle.classList.remove("active");
-
+            navMenu.classList.remove("active");
         });
-
     });
-
 }
 
 
-/* =========================================================
-   HEADER SCROLL
-========================================================= */
+/* ================= HEADER AO ROLAR ================= */
 
-const header = document.getElementById("header");
+const header = document.querySelector("header");
 
 window.addEventListener("scroll", () => {
-
-    if (!header) return;
-
-    if (window.scrollY > 50) {
-
-        header.classList.add("scrolled");
-
-    } else {
-
-        header.classList.remove("scrolled");
-
+    if (header) {
+        if (window.scrollY > 50) {
+            header.classList.add("scrolled");
+        } else {
+            header.classList.remove("scrolled");
+        }
     }
-
 });
 
 
-/* =========================================================
-   ANIMAÇÃO AO ROLAR
-========================================================= */
+/* ================= CARROSSEL ================= */
+
+const slides = document.querySelectorAll(".carousel-slide");
+const dots = document.querySelectorAll(".carousel-dot");
+const prevButton = document.querySelector(".carousel-prev");
+const nextButton = document.querySelector(".carousel-next");
+
+let currentSlide = 0;
+let carouselInterval;
+let carouselPaused = false;
+
+
+/* Mostrar slide */
+
+function showSlide(index) {
+    if (!slides.length) return;
+
+    // Volta para o primeiro slide
+    if (index >= slides.length) {
+        currentSlide = 0;
+    }
+
+    // Vai para o último slide
+    else if (index < 0) {
+        currentSlide = slides.length - 1;
+    }
+
+    else {
+        currentSlide = index;
+    }
+
+    // Remove o slide ativo
+    slides.forEach(slide => {
+        slide.classList.remove("active");
+    });
+
+    // Remove o dot ativo
+    dots.forEach(dot => {
+        dot.classList.remove("active");
+    });
+
+    // Ativa o slide atual
+    slides[currentSlide].classList.add("active");
+
+    // Ativa o dot atual
+    if (dots[currentSlide]) {
+        dots[currentSlide].classList.add("active");
+    }
+}
+
+
+/* Próximo slide */
+
+function nextSlide() {
+    showSlide(currentSlide + 1);
+}
+
+
+/* Slide anterior */
+
+function prevSlide() {
+    showSlide(currentSlide - 1);
+}
+
+
+/* Iniciar carrossel automático */
+
+function startCarousel() {
+    if (!slides.length) return;
+
+    clearInterval(carouselInterval);
+
+    carouselInterval = setInterval(() => {
+        if (!carouselPaused) {
+            nextSlide();
+        }
+    }, 5000);
+}
+
+
+/* Botão próximo */
+
+if (nextButton) {
+    nextButton.addEventListener("click", () => {
+        nextSlide();
+        startCarousel();
+    });
+}
+
+
+/* Botão anterior */
+
+if (prevButton) {
+    prevButton.addEventListener("click", () => {
+        prevSlide();
+        startCarousel();
+    });
+}
+
+
+/* Bolinhas do carrossel */
+
+dots.forEach((dot, index) => {
+    dot.addEventListener("click", () => {
+        showSlide(index);
+        startCarousel();
+    });
+});
+
+
+/* Pausar ao passar o mouse */
+
+const carousel = document.querySelector(".hero-carousel");
+
+if (carousel) {
+
+    carousel.addEventListener("mouseenter", () => {
+        carouselPaused = true;
+    });
+
+    carousel.addEventListener("mouseleave", () => {
+        carouselPaused = false;
+    });
+
+    // Pausa no toque em dispositivos móveis
+    carousel.addEventListener("touchstart", () => {
+        carouselPaused = true;
+    });
+
+    carousel.addEventListener("touchend", () => {
+        setTimeout(() => {
+            carouselPaused = false;
+        }, 3000);
+    });
+}
+
+
+/* ================= SWIPE NO CELULAR ================= */
+
+let touchStartX = 0;
+let touchEndX = 0;
+
+if (carousel) {
+
+    carousel.addEventListener("touchstart", (event) => {
+        touchStartX = event.changedTouches[0].screenX;
+    });
+
+    carousel.addEventListener("touchend", (event) => {
+        touchEndX = event.changedTouches[0].screenX;
+
+        handleSwipe();
+    });
+}
+
+
+function handleSwipe() {
+
+    const difference = touchStartX - touchEndX;
+
+    // Arrastar para esquerda
+    if (difference > 50) {
+        nextSlide();
+        startCarousel();
+    }
+
+    // Arrastar para direita
+    if (difference < -50) {
+        prevSlide();
+        startCarousel();
+    }
+}
+
+
+/* Inicia o carrossel */
+
+if (slides.length) {
+    showSlide(0);
+    startCarousel();
+}
+
+
+/* ================= ANIMAÇÃO AO ROLAR ================= */
 
 const revealElements = document.querySelectorAll(".reveal");
 
-if ("IntersectionObserver" in window) {
+const revealObserver = new IntersectionObserver(
+    (entries, observer) => {
 
-    const revealObserver = new IntersectionObserver(
-        entries => {
+        entries.forEach(entry => {
 
-            entries.forEach(entry => {
+            if (entry.isIntersecting) {
 
-                if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
 
-                    entry.target.classList.add("visible");
-
-                    revealObserver.unobserve(entry.target);
-
-                }
-
-            });
-
-        },
-        {
-            threshold: 0.12
-        }
-    );
-
-
-    revealElements.forEach(element => {
-
-        revealObserver.observe(element);
-
-    });
-
-} else {
-
-    /* Fallback para navegadores antigos */
-
-    revealElements.forEach(element => {
-
-        element.classList.add("visible");
-
-    });
-
-}
-
-
-/* =========================================================
-   CONTADORES
-========================================================= */
-
-const counters = document.querySelectorAll(".counter");
-let countersStarted = false;
-
-
-function startCounters() {
-
-    if (countersStarted) return;
-
-    countersStarted = true;
-
-
-    counters.forEach(counter => {
-
-        const target = Number(counter.dataset.target);
-
-        let current = 0;
-
-        const increment = Math.max(
-            1,
-            Math.ceil(target / 50)
-        );
-
-
-        const updateCounter = () => {
-
-            current += increment;
-
-
-            if (current >= target) {
-
-                counter.textContent = target;
-
-                return;
-
+                observer.unobserve(entry.target);
             }
-
-
-            counter.textContent = current;
-
-            requestAnimationFrame(updateCounter);
-
-        };
-
-
-        updateCounter();
-
-    });
-
-}
-
-
-const heroInfo = document.querySelector(".hero-info");
-
-
-if (heroInfo && "IntersectionObserver" in window) {
-
-    const counterObserver = new IntersectionObserver(
-        entries => {
-
-            if (entries[0].isIntersecting) {
-
-                startCounters();
-
-                counterObserver.disconnect();
-
-            }
-
-        },
-        {
-            threshold: 0.5
-        }
-    );
-
-
-    counterObserver.observe(heroInfo);
-
-} else {
-
-    startCounters();
-
-}
-
-
-/* =========================================================
-   FILTROS DOS PRODUTOS
-========================================================= */
-
-const filters = document.querySelectorAll(".filter");
-const products = document.querySelectorAll(".product-card");
-
-
-filters.forEach(filter => {
-
-    filter.addEventListener("click", () => {
-
-        /* Remove active de todos */
-
-        filters.forEach(button => {
-
-            button.classList.remove("active");
 
         });
 
-
-        /* Ativa o botão selecionado */
-
-        filter.classList.add("active");
-
-
-        const category = filter.dataset.filter;
+    },
+    {
+        threshold: 0.15
+    }
+);
 
 
-        /* Filtra os produtos */
-
-        products.forEach(product => {
-
-            const productCategory =
-                product.dataset.category;
+revealElements.forEach(element => {
+    revealObserver.observe(element);
+});
 
 
-            if (
-                category === "todos" ||
-                productCategory === category
-            ) {
+/* ================= CONTADORES ================= */
 
-                product.classList.remove("hidden");
+const counters = document.querySelectorAll(".counter");
+
+function animateCounter(counter) {
+
+    const target = Number(counter.getAttribute("data-target"));
+
+    if (isNaN(target)) return;
+
+    let current = 0;
+
+    const increment = target / 100;
+
+    const updateCounter = () => {
+
+        current += increment;
+
+        if (current < target) {
+
+            counter.innerText = Math.ceil(current);
+
+            requestAnimationFrame(updateCounter);
+
+        } else {
+
+            counter.innerText = target;
+
+        }
+    };
+
+    updateCounter();
+}
+
+
+const counterObserver = new IntersectionObserver(
+    (entries, observer) => {
+
+        entries.forEach(entry => {
+
+            if (entry.isIntersecting) {
+
+                animateCounter(entry.target);
+
+                observer.unobserve(entry.target);
+            }
+
+        });
+
+    },
+    {
+        threshold: 0.5
+    }
+);
+
+
+counters.forEach(counter => {
+    counterObserver.observe(counter);
+});
+
+
+/* ================= FILTRO DE PRODUTOS ================= */
+
+const filterButtons = document.querySelectorAll(".filter-btn");
+const productCards = document.querySelectorAll("#productGrid .product-card");
+
+
+filterButtons.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        // Remove ativo dos botões
+        filterButtons.forEach(btn => {
+            btn.classList.remove("active");
+        });
+
+        // Ativa botão selecionado
+        button.classList.add("active");
+
+        const filter = button.getAttribute("data-filter");
+
+        productCards.forEach(card => {
+
+            const category = card.getAttribute("data-category");
+
+            if (filter === "todos" || filter === category) {
+
+                card.style.display = "";
+
+                setTimeout(() => {
+                    card.classList.add("show");
+                }, 10);
 
             } else {
 
-                product.classList.add("hidden");
+                card.classList.remove("show");
+                card.style.display = "none";
 
             }
 
@@ -277,128 +366,148 @@ filters.forEach(filter => {
 });
 
 
-/* =========================================================
-   MODAL DE PRODUTO
-========================================================= */
+/* Exibe a foto quando o arquivo existe; mantém o ícone caso contrário. */
+document.querySelectorAll(".card-photo").forEach(photo => {
+    const showIfLoaded = () => {
+        if (photo.naturalWidth > 0) photo.classList.add("loaded");
+    };
+    photo.addEventListener("load", showIfLoaded);
+    if (photo.complete) showIfLoaded();
+});
 
-const modal = document.getElementById("productModal");
-const modalClose = document.getElementById("modalClose");
-const modalName = document.getElementById("modalName");
-const modalPrice = document.getElementById("modalPrice");
+/* ================= MODAL DE PRODUTO ================= */
+
+const productModal = document.getElementById("product-modal");
+
+const modalImage = document.getElementById("modal-image");
+const modalTitle = document.getElementById("modal-title");
 const modalDescription = document.getElementById("modalDescription");
+const modalPrice = document.getElementById("modalPrice");
 const modalBuy = document.getElementById("modalBuy");
-const modalOverlay = document.querySelector(".modal-overlay");
+
+const modalClose = document.querySelector(".modal-close");
 
 
-/* Abrir modal */
+/* Abrir produto */
 
-function openModal(product) {
+productCards.forEach(card => {
 
-    if (!product || !modal) return;
+    card.addEventListener("click", () => {
 
+        const title = card.querySelector("h3");
+        const description = card.dataset.description || card.querySelector("p")?.textContent;
+        const price = card.dataset.price;
 
-    const name = product.dataset.name || "Produto";
-    const price = product.dataset.price || "0,00";
-    const description =
-        product.dataset.description || "Descrição do produto.";
+        if (modalImage) {
+            modalImage.innerHTML = "";
+            const photo = card.querySelector(".card-photo.loaded");
+            const jewel = card.querySelector(".jewel");
+            if (photo) {
+                const modalPhoto = document.createElement("img");
+                modalPhoto.className = "modal-photo";
+                modalPhoto.src = photo.src;
+                modalPhoto.alt = photo.alt;
+                modalImage.appendChild(modalPhoto);
+            } else if (jewel) {
+                modalImage.appendChild(jewel.cloneNode(true));
+            }
+            modalImage.className = `modal-image ${[...card.querySelector(".product-image").classList].filter(name => name.startsWith("image-")).join(" ")}`;
+        }
 
+        if (modalTitle && title) {
+            modalTitle.textContent = title.textContent;
+        }
 
-    /* Atualiza informações */
+        if (modalDescription && description) {
+            modalDescription.textContent = description.trim();
+        }
 
-    modalName.textContent = name;
+        if (modalPrice && price) {
+            modalPrice.textContent = `R$ ${price}`;
+        }
+        if (modalBuy) modalBuy.href = `https://wa.me/5547997560445?text=${encodeURIComponent(`Olá! Gostaria de saber mais sobre ${title?.textContent.trim() || "essa joia"}.`)}`;
 
-    modalPrice.textContent = `R$ ${price}`;
+        if (productModal) {
+            productModal.classList.add("active");
+            document.body.classList.add("modal-open");
+        }
 
-    modalDescription.textContent = description;
+    });
 
-
-    /* Mensagem do WhatsApp */
-
-    const message =
-        `Olá Lili! Tenho interesse no piercing "${name}", no valor de R$ ${price}. Gostaria de saber mais informações.`;
-
-
-    /* Atualiza botão */
-
-    if (modalBuy) {
-
-        modalBuy.href =
-            `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
-
-    }
-
-
-    /* Abre modal */
-
-    modal.classList.add("active");
-
-    document.body.classList.add("modal-open");
-
-}
+});
 
 
 /* Fechar modal */
 
-function closeModal() {
+if (modalClose) {
 
-    if (!modal) return;
+    modalClose.addEventListener("click", () => {
 
-    modal.classList.remove("active");
+        productModal.classList.remove("active");
 
-    document.body.classList.remove("modal-open");
+        document.body.classList.remove("modal-open");
+
+    });
 
 }
 
 
-/* =========================================================
-   BOTÃO VER PRODUTO
-========================================================= */
+/* Fechar clicando fora */
 
-document.querySelectorAll(".quick-view").forEach(button => {
+if (productModal) {
 
-    button.addEventListener("click", event => {
+    productModal.addEventListener("click", event => {
 
-        const product =
-            event.currentTarget.closest(".product-card");
+        if (event.target === productModal) {
 
+            productModal.classList.remove("active");
 
-        if (product) {
-
-            openModal(product);
+            document.body.classList.remove("modal-open");
 
         }
 
     });
 
-});
+}
 
 
-/* =========================================================
-   BOTÃO COMPRAR
-========================================================= */
+/* ================= BOTÕES WHATSAPP ================= */
+
+const whatsappNumber = "5547997560445";
+
+
+function openWhatsApp(message = "") {
+
+    const encodedMessage = encodeURIComponent(message);
+
+    const url = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+
+    window.open(url, "_blank");
+
+}
+
+
+/* Botões de compra */
 
 document.querySelectorAll(".buy-btn").forEach(button => {
 
     button.addEventListener("click", event => {
 
-        const product =
-            event.currentTarget.closest(".product-card");
+        event.preventDefault();
+        event.stopPropagation();
 
+        const card = button.closest(".product-card");
 
-        if (!product) return;
+        if (!card) return;
 
+        const title = card.querySelector("h3");
 
-        const name =
-            product.dataset.name || "Produto";
-
-
-        const price =
-            product.dataset.price || "0,00";
-
+        const productName = title
+            ? title.textContent.trim()
+            : "produto";
 
         const message =
-            `Olá Lili! Tenho interesse no piercing "${name}", no valor de R$ ${price}. Gostaria de saber mais informações.`;
-
+            `Olá! Gostaria de saber mais sobre o ${productName}.`;
 
         openWhatsApp(message);
 
@@ -407,84 +516,94 @@ document.querySelectorAll(".buy-btn").forEach(button => {
 });
 
 
-/* =========================================================
-   FECHAR MODAL
-========================================================= */
+/* Links para WhatsApp */
 
-if (modalClose) {
+document.querySelectorAll('a[href="#contato"]').forEach(link => {
 
-    modalClose.addEventListener(
-        "click",
-        closeModal
-    );
+    link.addEventListener("click", event => {
 
-}
+        event.preventDefault();
 
+        openWhatsApp(
+            "Olá! Gostaria de saber mais sobre os produtos e serviços."
+        );
 
-if (modalOverlay) {
-
-    modalOverlay.addEventListener(
-        "click",
-        closeModal
-    );
-
-}
-
-
-/* Fechar com ESC */
-
-document.addEventListener("keydown", event => {
-
-    if (
-        event.key === "Escape" &&
-        modal &&
-        modal.classList.contains("active")
-    ) {
-
-        closeModal();
-
-    }
+    });
 
 });
 
 
-/* =========================================================
-   VOLTAR AO TOPO
-========================================================= */
+/* ================= INSTAGRAM ================= */
 
-const backTop = document.getElementById("backTop");
+const instagramURL = "https://www.instagram.com/bodylili/";
 
 
-window.addEventListener("scroll", () => {
+document.querySelectorAll(".instagram-link").forEach(element => {
 
-    if (!backTop) return;
+    element.addEventListener("click", event => {
 
+        event.preventDefault();
 
-    if (window.scrollY > 500) {
+        window.open(instagramURL, "_blank");
 
-        backTop.classList.add("show");
-
-    } else {
-
-        backTop.classList.remove("show");
-
-    }
+    });
 
 });
 
 
-if (backTop) {
+/* ================= BOTÃO VOLTAR AO TOPO ================= */
 
-    backTop.addEventListener("click", () => {
+const backToTop = document.querySelector(".back-top");
+
+
+if (backToTop) {
+
+    window.addEventListener("scroll", () => {
+
+        if (window.scrollY > 500) {
+
+            backToTop.classList.add("show");
+
+        } else {
+
+            backToTop.classList.remove("show");
+
+        }
+
+    });
+
+
+    backToTop.addEventListener("click", () => {
 
         window.scrollTo({
-
             top: 0,
-
             behavior: "smooth"
-
         });
 
     });
 
+}
+
+
+/* ================= ESC PARA FECHAR MODAL ================= */
+
+document.addEventListener("keydown", event => {
+
+    if (event.key === "Escape" && productModal) {
+
+        productModal.classList.remove("active");
+
+        document.body.classList.remove("modal-open");
+
+    }
+
+});
+
+
+/* ================= ANO AUTOMÁTICO ================= */
+
+const currentYear = document.getElementById("current-year");
+
+if (currentYear) {
+    currentYear.textContent = new Date().getFullYear();
 }
