@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <!-- HEAD: configurações gerais da página, fontes, ícones e arquivos de estilo. -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="Coleção de joias Lili Teixeira Body Piercer.">
+  <title>Joias | Lili Teixeira Body Piercer</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E✦%3C/text%3E%3C/svg%3E">
+  <link rel="preload" as="image" href="images/logo-header.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <!-- CSS principal do site -->
+  <link rel="stylesheet" href="style.css">
+  <!-- Estilos exclusivos desta página de produtos. -->
+  <style>
+    .products-page { padding-top: 125px; min-height: 100vh; }
+    .products-page .section-header { margin-bottom: 34px; }
+    .products-intro { max-width: 650px; margin-top: 12px; line-height: 1.7; color: var(--gray); }
+    .products-toolbar { display:flex; gap:10px; flex-wrap:wrap; margin: 26px 0 36px; }
+    .filter-btn { border:1px solid var(--border); background:transparent; padding:10px 18px; border-radius:30px; cursor:pointer; transition:var(--transition); }
+    .filter-btn.active,.filter-btn:hover { background:var(--black); color:var(--white); border-color:var(--black); }
+    .page-back { display:inline-flex; align-items:center; gap:8px; margin-bottom:22px; font-size:13px; color:var(--wine); }
+    @media (max-width:768px){ .products-page{padding-top:105px;} }
+  </style>
+</head>
+<body>
+  <!-- Início do conteúdo visível da página -->
+  <!-- PRELOADER: tela exibida enquanto a página está carregando. -->
+  <div class="preloader" id="preloader"><div class="loader-logo"><span>LILI</span><small>BODY PIERCER</small></div><div class="loader"></div></div>
+  <!-- CABEÇALHO: logo, navegação, botão do WhatsApp e menu mobile. -->
+  <header class="header" id="header">
+    <a href="index.html" class="logo" aria-label="Voltar ao início"><img src="images/logo-header.png" alt="Lili Teixeira Body Piercing" decoding="async"></a>
+    <!-- Menu principal de navegação -->
+    <nav class="nav" id="nav">
+      <a href="index.html">Início</a><a href="index.html#produtos">Joias</a><a href="produtos.html">Produtos</a><a href="index.html#sobre">Sobre</a><a href="index.html#depoimentos">Depoimentos</a>
+      <a href="https://wa.me/5547997560445?text=Olá%20Lili!%20Gostaria%20de%20entrar%20em%20contato." target="_blank" rel="noopener noreferrer">Contato</a>
+    </nav>
+    <a href="https://wa.me/5547997560445?text=Olá%20Lili!%20Gostaria%20de%20agendar%20um%20atendimento." target="_blank" rel="noopener noreferrer" class="btn-header"><i class="fa-brands fa-whatsapp"></i> Agendar</a>
+    <!-- Botão que abre/fecha o menu em telas menores. -->
+    <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav"><span></span><span></span><span></span></button>
+  </header>
+
+  <!-- Conteúdo principal da página -->
+  <main class="products-page">
+    <!-- SEÇÃO DE PRODUTOS: título, filtros e cards das joias. -->
+    <section class="products section" id="produtos">
+      <a class="page-back" href="index.html"><i class="fa-solid fa-arrow-left"></i> Voltar ao site</a>
+      <div class="section-header reveal"><div><span class="eyebrow">COLEÇÃO COMPLETA</span><h2>Escolha sua <em>joia.</em></h2><p class="products-intro">Conheça os modelos disponíveis. Clique em uma joia para ver os detalhes ou fale diretamente pelo WhatsApp.</p></div></div>
+      <!-- FILTROS: o data-filter é usado pelo JavaScript para filtrar os cards. -->
+      <div class="products-toolbar" aria-label="Filtrar produtos">
+        <button class="filter-btn active" data-filter="todos">Todos</button><button class="filter-btn" data-filter="labret">Labret</button><button class="filter-btn" data-filter="argola">Argolas</button><button class="filter-btn" data-filter="especial">Especiais</button><button class="filter-btn" data-filter="cluster">Clúster</button>
+      </div>
+      <!-- GRADE DE PRODUTOS: cada article representa uma joia.
+           data-category = categoria do filtro
+           data-name = nome mostrado no modal
+           data-price = preço mostrado no modal
+           data-description = descrição mostrada no modal -->
+      <div class="product-grid" id="productGrid">
+
+        <!-- PRODUTO: Navete em zircônia Gold -->
+        <article class="product-card reveal" data-category="labret" data-name="Navete em zircônia Gold" data-price="107,00" data-description="Design delicado com duas pedras em formato de folha, trazendo brilho e sofisticação para a composição.">
+          <div class="product-image image-gold"><img class="card-photo" src="images/joias/argola-dourada.jpg" alt="Navete em zircônia Gold" loading="lazy"><span class="product-tag">MAIS VENDIDO</span><div class="jewel">◇</div><button class="quick-view" aria-label="Ver Navete em zircônia Gold"><i class="fa-solid fa-eye"></i></button></div>
+          <div class="product-info"><span class="product-category">LABRET</span><h3>Navete em zircônia Gold</h3><p>Design delicado com duas pedras em formato de folha, trazendo brilho e sofisticação para a composição.</p><div class="product-bottom"><strong>R$ 107,00</strong><button class="buy-btn">Comprar <i class="fa-solid fa-arrow-right"></i></button></div></div>
+        </article>
+
+        <!-- PRODUTO: Clúster zircônia -->
+        <article class="product-card reveal" data-category="cluster" data-name="Clúster zircônia" data-price="145,00" data-description="Composição de pedras em diferentes formatos que cria um visual moderno, delicado e cheio de brilho.">
+          <div class="product-image image-gold"><img class="card-photo" src="images/joias/pedrinha-crystal.jpg" alt="Clúster zircônia" loading="lazy"><div class="jewel">◇</div><button class="quick-view" aria-label="Ver Clúster zircônia"><i class="fa-solid fa-eye"></i></button></div>
+          <div class="product-info"><span class="product-category">LABRET</span><h3>Clúster zircônia</h3><p>Composição de pedras em diferentes formatos que cria um visual moderno, delicado e cheio de brilho.</p><div class="product-bottom"><strong>R$ 145,00</strong><button class="buy-btn">Comprar <i class="fa-solid fa-arrow-right"></i></button></div></div>
+        </article>
+
+        <!-- PRODUTO: Navel Piercing Heart -->
+        <article class="product-card reveal" data-category="especial" data-name="Navel Piercing Heart" data-price="145,00" data-description="Uma combinação delicada de ponto de luz com pedra em formato de coração, ideal para quem ama brilho e romantismo.">
+          <div class="product-image image-gold"><img class="card-photo" src="images/joias/heart-piercing.jpg" alt="Navel Piercing Heart" loading="lazy"><span class="product-tag">NOVO</span><div class="jewel">◇</div><button class="quick-view" aria-label="Ver Navel Piercing Heart"><i class="fa-solid fa-eye"></i></button></div>
+          <div class="product-info"><span class="product-category">ESPECIAL</span><h3>Navel Piercing Heart</h3><p>Uma combinação delicada de ponto de luz com pedra em formato de coração, ideal para quem ama brilho e romantismo.</p><div class="product-bottom"><strong>R$ 145,00</strong><button class="buy-btn">Comprar <i class="fa-solid fa-arrow-right"></i></button></div></div>
+        </article>
+
+        <!-- PRODUTO: Argola tripla trançada -->
+        <article class="product-card reveal" data-category="argola" data-name="Argola tripla trançada" data-price="107,00" data-description="Argola com acabamento torcido e visual minimalista, perfeita para composições modernas e elegantes.">
+          <div class="product-image image-gold"><img class="card-photo" src="images/joias/argola-premium.jpg" alt="Argola tripla trançada" loading="lazy"><div class="jewel">◇</div><button class="quick-view" aria-label="Ver Argola tripla trançada"><i class="fa-solid fa-eye"></i></button></div>
+          <div class="product-info"><span class="product-category">ARGOLA</span><h3>Argola tripla trançada</h3><p>Argola com acabamento torcido e visual minimalista, perfeita para composições modernas e elegantes.</p><div class="product-bottom"><strong>R$ 107,00</strong><button class="buy-btn">Comprar <i class="fa-solid fa-arrow-right"></i></button></div></div>
+        </article>
+
+        <!-- PRODUTO: Duplo Marquise e Zircônia Dourado -->
+        <article class="product-card reveal" data-category="labret" data-name="Duplo Marquise e Zircônia Dourado" data-price="107,00" data-description="Piercing com topo composto por duas hastes paralelas sutis, cada uma com uma zircônia navete (marquise) e um pequeno ponto de luz redondo. Acabamento dourado sofisticado, ótimo para tragus, hélix ou flat.">
+          <div class="product-image image-gold"><img class="card-photo" src="images/joias/duplo marquse e zirconia dourado.jpg" alt="Duplo Marquise e Zircônia Dourado" loading="lazy"><div class="jewel">◇</div><button class="quick-view" aria-label="Ver Labret Ponto de Luz"><i class="fa-solid fa-eye"></i></button></div>
+          <div class="product-info"><span class="product-category">LABRET</span><h3>Duplo Marquise e Zircônia Dourado</h3><p>Piercing dourado com duas hastes delicadas, zircônias navete e pontos de luz. Ideal para tragus, hélix ou flat..</p><div class="product-bottom"><strong>R$ 107,00</strong><button class="buy-btn">Comprar <i class="fa-solid fa-arrow-right"></i></button></div></div>
+        </article>
+
+        <!-- PRODUTO: Carolina mamilo / Barbell ornamentado -->
+        <article class="product-card reveal" data-category="especial" data-name="Carolina mamilo" data-price="145,00" data-description="Descrição: Topo de piercing em arco delicado, cravado com zircônias redondas em ordem crescente de tamanho. Fabricado em titânio de grau médico na cor prata/natural. Design minimalista e elegante.">
+          <div class="product-image image-gold"><img class="card-photo" src="images/joias/mamilo.jpg" alt="Carolina mamilo" loading="lazy"><div class="jewel">◇</div><button class="quick-view" aria-label="Ver Argola Clicker Gold"><i class="fa-solid fa-eye"></i></button></div>
+          <div class="product-info"><span class="product-category">ESPECIAL</span><h3>Barbell Ornamentado com Zircônias</h3><p>Piercing em arco com zircônias crescentes, feito em titânio grau médico. Design delicado, minimalista e elegante.</p><div class="product-bottom"><strong>R$ 145,00</strong><button class="buy-btn">Comprar <i class="fa-solid fa-arrow-right"></i></button></div></div>
+        </article>
+
+        <!-- PRODUTO: Clúster Tiara Marquise Dourado -->
+        <article class="product-card reveal" data-category="cluster" data-name="Clúster  Tiara Marquise Dourado" data-price="180,00" data-description="Piercing Clúster com topo em formato de tiara/coroa curvada, cravado com zircônias em lapidação navete/marquise e redondas na cor cristal. Confeccionado em titânio/aço com banho dourado PVD. Ideal para perfurações no hélix, conch ou flat..">
+          <div class="product-image image-gold"><img class="card-photo" src="images/joias/cluster tiara dourado.jpg" alt="show_html" loading="lazy"><div class="jewel">◇</div><button class="quick-view" aria-label="Ver Piercing Coração Crystal"><i class="fa-solid fa-eye"></i></button></div>
+          <div class="product-info"><span class="product-category">Cluster</span><h3>Cluster Tiara Marquise Dourado</h3><p>Piercing Clúster  dourado em formato de tiara, com zircônias cristal. Elegante e ideal para hélix, conch ou flat..</p>
+            <div class="product-bottom"><strong>R$ 180,00</strong><button class="buy-btn">Comprar <i class="fa-solid fa-arrow-right"></i></button></div></div>
+        </article>
+
+        <!-- PRODUTO: Estrela em Zircônias Dourado -->
+        <article class="product-card reveal" data-category="labret" data-name="Estrela em Zircônias Dourado" data-price="120,00" data-description="Piercing delicado com topo geométrico em formato de borboleta estilizada/estrela, trabalhado com zircônias em lapidação baguete/triangular e quadrada. Acabamento em banho dourado de alta durabilidade.">
+          <div class="product-image image-gold"><img class="card-photo" src="images/joias/estrela ziconia dourada.jpg" alt="Estrela em Zircônias Dourado" loading="lazy"><div class="jewel">◇</div><button class="quick-view" aria-label="Ver Argola Premium Crystal"><i class="fa-solid fa-eye"></i></button></div>
+          <div class="product-info"><span class="product-category">LABRET</span><h3>Estrela em Zircônias Dourado</h3><p>Piercing dourado com topo geométrico e zircônias, de design delicado e moderno.</p><div class="product-bottom"><strong>R$ 120,00</strong><button class="buy-btn">Comprar <i class="fa-solid fa-arrow-right"></i></button></div></div>
+        </article>
+
+        <!-- PRODUTO: Ramalhete Folha Dourado -->
+        <article class="product-card reveal" data-category="labret" data-name="Piercing Ramalhete Folha Dourado" data-price="120,00" data-description="Topo em arranjo botânico/orgânico simulando folhas, cravado com zircônias navetes e redondas brilhantes. Peça biocompatível em titânio com revestimento dourado.">
+          <div class="product-image image-gold"><img class="card-photo" src="images/joias/ramalhete zirconias dourado.jpg" alt="show_html" loading="lazy"><div class="jewel">◇</div><button class="quick-view" aria-label="Ver Labret Mini Navete"><i class="fa-solid fa-eye"></i></button></div>
+          <div class="product-info"><span class="product-category">LABRET</span><h3>Ramalhete Folha Dourado</h3><p>Piercing dourado com design de folhas e zircônias brilhantes, feito em titânio biocompatível..</p><div class="product-bottom"><strong>R$ 120,00</strong><button class="buy-btn">Comprar <i class="fa-solid fa-arrow-right"></i></button></div></div>
+        </article>
+
+        <!-- PRODUTO: Piercing Florzinha -->
+        <article class="product-card reveal" data-category="labret" data-name="Piercing Florzinha" data-price="150,00" data-description="Piercing delicado de três pedras em arranjo compacto (uma zircônia redonda central e duas laterais em lapidação navete). Acabamento dourado elegante, ideal para tragus ou hélix.">
+          <div class="product-image image-gold"><img class="card-photo" src="images/joias/florzinha.jpg" alt="Piercing Florzinha" loading="lazy"><div class="jewel">◇</div><button class="quick-view" aria-label="Ver Cluster Crystal Premium"><i class="fa-solid fa-eye"></i></button></div>
+          <div class="product-info"><span class="product-category">LABRET</span><h3>Labret Florzinha</h3><p>Piercing dourado com três zircônias, delicado e elegante, ideal para tragus ou hélix.</p><div class="product-bottom"><strong>R$ 150,00</strong><button class="buy-btn">Comprar <i class="fa-solid fa-arrow-right"></i></button></div></div>
+        </article>
+
+        <!-- PRODUTO: Duplo Baguete e Marquise Dourado -->
+        <article class="product-card reveal" data-category="labret" data-name="Piercing Duplo Baguete e Marquise Dourado" data-price="107,00" data-description="Mini topo composto por uma zircônia em lapidação baguete (retangular) e uma em lapidação marquise dispostas de forma assimétrica e moderna. Acabamento com banho de ouro">
+          <div class="product-image image-gold"><img class="card-photo" src="images/joias/duplo baguete e marquise.jpg" alt="Piercing Duplo Baguete e Marquise Dourado" loading="lazy"><div class="jewel">◇</div><button class="quick-view" aria-label="Ver Argola Delicada Gold"><i class="fa-solid fa-eye"></i></button></div>
+          <div class="product-info"><span class="product-category">LABRET</span><h3>Piercing Duplo Baguete e Marquise Dourado</h3><p>Piercing dourado com zircônias baguete e marquise, em design moderno e assimétrico.</p><div class="product-bottom"><strong>R$ 107,00</strong><button class="buy-btn">Comprar <i class="fa-solid fa-arrow-right"></i></button></div></div>
+        </article>
+
+        <!-- PRODUTO: Cubic zirconia navel -->
+        <article class="product-card reveal" data-category="especial" data-name="Cubic zirconia navel" data-price="145,00" data-description="Joia para umbigo com brilho delicado e acabamento elegante.">
+          <div class="product-image image-gold"><img class="card-photo" src="images/joias/piercing umbiho com zirconias.jpg" alt="Navel Crystal Gold" loading="lazy"><div class="jewel">◇</div><button class="quick-view" aria-label="Ver Navel Crystal Gold"><i class="fa-solid fa-eye"></i></button></div>
+          <div class="product-info"><span class="product-category">ESPECIAL</span><h3>Cubic zirconia navel</h3><p>Joia em Titânio com zircônias navete lapidadas e ponto de luz na parte superior, ideal para perfuração em Umbigo</p><div class="product-bottom"><strong>R$ 145,00</strong><button class="buy-btn">Comprar <i class="fa-solid fa-arrow-right"></i></button></div></div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <!-- MODAL DE PRODUTO:
+       .modal-overlay = fundo escurecido
+       .modal-content = caixa central do modal
+       #modal-close = botão X
+       O script.js controla abertura, preenchimento e fechamento do modal,
+       inclusive o clique fora de .modal-content. -->
+  <div class="modal" id="product-modal"><div class="modal-overlay"></div><div class="modal-content"><button class="modal-close" id="modal-close" aria-label="Fechar"><i class="fa-solid fa-xmark"></i></button><div class="modal-image" id="modal-image"><i class="fa-solid fa-gem"></i></div><div class="modal-info"><span class="product-category">JOIA</span><h2 id="modal-title">Produto</h2><p id="modalDescription">Descrição do produto.</p><strong id="modalPrice">R$ 00,00</strong><a href="#" target="_blank" rel="noopener noreferrer" class="modal-buy" id="modalBuy"><i class="fa-brands fa-whatsapp"></i> Quero essa joia</a></div></div></div>
+  <!-- Botão para voltar ao topo da página -->
+  <button class="back-top" id="back-to-top" aria-label="Voltar ao topo"><i class="fa-solid fa-arrow-up"></i></button>
+  <!-- JavaScript principal. defer executa o script após o HTML ser processado. -->
+  <script src="script.js" defer></script>
+</body>
+</html>

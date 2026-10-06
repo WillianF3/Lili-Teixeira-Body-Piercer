@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+    <meta
+        name="description"
+        content="Lili Teixeira | Body Piercer. Piercings, joias e acessórios para expressar seu estilo."
+    >
+
+    <title>Lili Teixeira | Body Piercer</title>
+<!-- Favicon -->
+    <link
+        rel="icon"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E✦%3C/text%3E%3C/svg%3E"
+    >
+
+    <!-- Recursos visíveis no primeiro carregamento -->
+    <link rel="preload" as="image" href="images/logo-header.png">
+    <link rel="preload" as="image" href="images/carrossel-1.jpg" fetchpriority="high">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .section-shortcuts {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 16px;
+            padding: 32px 20px;
+        }
+        .section-shortcuts .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 150px;
+        }
+        #produtos, #servicos, #sobre { scroll-margin-top: 90px; }
+        #produtos[hidden], #servicos[hidden] { display: none; }
+        .section-shortcuts button { cursor: pointer; border: 0; }
+        .section-shortcuts button:not(.is-selected) { background: transparent; color: var(--wine); outline: 1px solid var(--wine); }
+        .service-card .product-image { height: 180px; font-size: 48px; color: var(--wine); }
+        .service-card .product-info p { font-size: 14px; line-height: 1.6; margin-bottom: 0; }
+    </style>
+</head>
+
+<body>
+
+    <!-- ================= PRELOADER ================= -->
+    <div class="preloader" id="preloader">
+        <div class="loader-logo">
+            <span>LILI</span>
+            <small>BODY PIERCER</small>
+        </div>
+
+        <div class="loader"></div>
+    </div>
+
+
+    <!-- ================= HEADER ================= -->
+    <header class="header" id="header">
+
+        <a href="#inicio" class="logo" aria-label="Lili Teixeira Body Piercing - Início">
+            <img src="images/logo-header.png" alt="Lili Teixeira Body Piercing" decoding="async">
+        </a>
+
+        <nav class="nav" id="nav">
+            <a href="#inicio">Início</a>
+            <a href="#produtos">Joias</a>
+            <a href="produtos.html">Produtos</a>
+            <a href="#sobre">Sobre</a>
+            <a href="#depoimentos">Experiências</a>
+            <a href="https://wa.me/5547997560445?text=Olá%20Lili!%20Gostaria%20de%20entrar%20em%20contato."
+            target="_blank"
+            rel="noopener noreferrer"
+            >
+    Contato
+</a>
+        </nav>
+
+        <!-- WhatsApp -->
+        <a
+            href="https://wa.me/5547997560445?text=Olá%20Lili!%20Gostaria%20de%20agendar%20um%20atendimento."
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-header"
+        >
+            <i class="fa-brands fa-whatsapp"></i>
+            Agendar
+        </a>
+
+        <button
+            class="menu-toggle"
+            id="menu-toggle"
+            aria-label="Abrir menu"
+            aria-expanded="false"
+            aria-controls="nav"
+        >
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+    </header>
+
+
+    <!-- ================= HERO ================= -->
+    <main>
+
+
+      <!-- ================= CARROSSEL ================= -->
+<section class="hero-carousel" id="carrossel" aria-label="Destaques Lili Body Piercer">
+
+    <div class="carousel-slide active">
+        <img src="images/carrossel-1.jpg" alt="Lili Body Piercer" fetchpriority="high" decoding="async">
+        <div class="carousel-overlay">
+            <div class="carousel-content">
+                <span class="carousel-label">BODY PIERCER</span>
+                <h2>Seu corpo.<br>Sua identidade.</h2>
+                <p>Piercings e joias para destacar seu estilo.</p>
+                <a href="https://wa.me/5547997560445?text=Olá!%20Gostaria%20de%20agendar%20um%20piercing."
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="carousel-button">
+                    Agendar pelo WhatsApp
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="carousel-slide">
+        <img src="images/carrossel-2.jpg" alt="Joias para piercing" loading="lazy" decoding="async">
+        <div class="carousel-overlay">
+            <div class="carousel-content">
+                <span class="carousel-label">COLEÇÃO</span>
+                <h2>Encontre sua<br>próxima joia.</h2>
+                <p>Modelos selecionados para combinar com você.</p>
+                <a href="produtos.html" class="carousel-button">Ver produtos</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="carousel-slide">
+        <img src="images/carrossel-3.jpg" alt="Atendimento Body Piercer" loading="lazy" decoding="async">
+        <div class="carousel-overlay">
+            <div class="carousel-content">
+                <span class="carousel-label">ATENDIMENTO PERSONALIZADO</span>
+                <h2>Detalhes que<br>fazem diferença.</h2>
+                <p>Atendimento pensado para deixar sua experiência ainda melhor.</p>
+                <a href="#sobre" class="carousel-button">Conheça nosso trabalho</a>
+            </div>
+        </div>
+    </div>
+
+    <button type="button" class="carousel-control carousel-prev" aria-label="Imagem anterior">&#10094;</button>
+    <button type="button" class="carousel-control carousel-next" aria-label="Próxima imagem">&#10095;</button>
+
+    <div class="carousel-dots">
+        <button type="button" class="carousel-dot active" aria-label="Ir para imagem 1"></button>
+        <button type="button" class="carousel-dot" aria-label="Ir para imagem 2"></button>
+        <button type="button" class="carousel-dot" aria-label="Ir para imagem 3"></button>
+    </div>
+</section>
+
+<!-- ================= HERO ================= -->
+
+<!-- ================= BENEFÍCIOS ================= -->
+        <section class="benefits">
+
+            <div class="benefit reveal">
+
+                <div class="benefit-icon">
+                    <i class="fa-solid fa-gem"></i>
+                </div>
+
+                <div>
+                    <h3>Joias selecionadas</h3>
+                    <p>Modelos para diferentes estilos.</p>
+                </div>
+
+            </div>
+
+
+            <div class="benefit reveal">
+
+                <div class="benefit-icon">
+                    <i class="fa-solid fa-heart"></i>
+                </div>
+
+                <div>
+                    <h3>Atendimento personalizado</h3>
+                    <p>Escolha sua joia com orientação.</p>
+                </div>
+
+            </div>
+
+
+            <div class="benefit reveal">
+
+                <div class="benefit-icon">
+                    <i class="fa-solid fa-star"></i>
+                </div>
+
+                <div>
+                    <h3>Experiência</h3>
+                    <p>Cuidado em cada detalhe.</p>
+                </div>
+
+            </div>
+
+        </section>
+
+        <nav class="section-shortcuts" aria-label="Explorar o site">
+            <button class="btn-primary is-selected" type="button" data-show="produtos" aria-pressed="true">Joias</button>
+            <button class="btn-primary" type="button" data-show="servicos" aria-pressed="false">Serviços</button>
+        </nav>
+
+        <!-- ================= PRODUTOS ================= -->
+        <section class="products section" id="produtos">
+
+            <div class="section-header reveal">
+
+                <div>
+
+                    <span class="eyebrow">
+                        COLEÇÃO
+                    </span>
+
+                    <h2>
+                        Escolha sua
+                        <em>joia.</em>
+                    </h2>
+
+                </div>
+
+              
+            </div>
+
+
+            <div class="product-grid" id="productGrid">
+
+                <!-- PRODUTO 1 -->
+                <article
+                    class="product-card reveal"
+                    data-category="labret"
+                    data-name="Navete em zircônia Gold "
+                    data-price="107,00"
+                    data-description="Design delicado com duas pedras em formato de folha, trazendo brilho e sofisticação para a composição."
+                >
+
+                    <div class="product-image image-gold">
+                        <img class="card-photo" src="images/joias/argola-dourada.jpg" alt="Navete em zircônia Gold " loading="lazy">
+
+                        <span class="product-tag">
+                            MAIS VENDIDO
+                        </span>
+
+                        <div class="jewel">
+                            ◯
+                        </div>
+
+                        <button
+                            class="quick-view"
+                            aria-label="Ver produto"
+                        >
+                            <i class="fa-solid fa-eye"></i>
+                        </button>
+
+                    </div>
+
+
+                    <div class="product-info">
+
+                        <span class="product-category">
+                            LABRET
+                        </span>
+
+                        <h3>
+                            Navete em zircônia Gold 
+                        </h3>
+
+                        <p>
+                            Design delicado e moderno.
+                        </p>
+
+
+                        <div class="product-bottom">
+
+                            <strong>
+                                R$ 107,00
+                            </strong>
+
+                            <button class="buy-btn">
+                                Comprar
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PRODUTO 2 -->
+                <article
+                    class="product-card reveal"
+                    data-category="pedra"
+                    data-name="Clúster zircônia "
+                    data-price="145,00"
+                    data-description="Composição de pedras em diferentes formatos que cria um visual moderno, delicado e cheio de brilho."
+                >
+
+                    <div class="product-image image-crystal">
+                        <img class="card-photo" src="images/joias/pedrinha-crystal.jpg" alt="Clúster zircônia" loading="lazy">
+
+                        <div class="jewel">
+                            ◇
+                        </div>
+
+                        <button
+                            class="quick-view"
+                            aria-label="Ver produto"
+                        >
+                            <i class="fa-solid fa-eye"></i>
+                        </button>
+
+                    </div>
+
+
+                    <div class="product-info">
+
+                        <span class="product-category">
+                            LABRET
+                        </span>
+
+                        <h3>
+                            Clúster zircônia 
+                        </h3>
+
+                        <p>
+                            Delicadeza para qualquer ocasião.
+                        </p>
+
+
+                        <div class="product-bottom">
+
+                            <strong>
+                                R$ 145,00
+                            </strong>
+
+                            <button class="buy-btn">
+                                Comprar
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PRODUTO 3 -->
+                <article
+                    class="product-card reveal"
+                    data-category="especial"
+                    data-name="Navel Piercing Heart"
+                    data-price="145,00"
+                    data-description="Uma combinação delicada de ponto de luz com pedra em formato de coração, ideal para quem ama brilho e romantismo."
+                >
+
+                    <div class="product-image image-rose">
+                        <img class="card-photo" src="images/joias/heart-piercing.jpg" alt="Heart Piercing" loading="lazy">
+
+                        <span class="product-tag">
+                            NOVO
+                        </span>
+
+                        <div class="jewel">
+                            ♡
+                        </div>
+
+                        <button
+                            class="quick-view"
+                            aria-label="Ver produto"
+                        >
+                            <i class="fa-solid fa-eye"></i>
+                        </button>
+
+                    </div>
+
+
+                    <div class="product-info">
+
+                        <span class="product-category">
+                            ESPECIAL
+                        </span>
+
+                        <h3>
+                            Navel Piercing Heart
+                        </h3>
+
+                        <p>
+                            Um detalhe pequeno que faz diferença.
+                        </p>
+
+
+                        <div class="product-bottom">
+
+                            <strong>
+                                R$ 145,00
+                            </strong>
+
+                            <button class="buy-btn">
+                                Comprar
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PRODUTO 4 -->
+                <article
+                    class="product-card reveal"
+                    data-category="argola"
+                    data-name="Argola tripla trançada "
+                    data-price="78,00"
+                    data-description="Argola com acabamento torcido e visual minimalista, perfeita para composições modernas e elegantes."
+                >
+
+                    <div class="product-image image-dark">
+                        <img class="card-photo" src="images/joias/argola-premium.jpg" alt="Argola Premium" loading="lazy">
+
+                        <div class="jewel">
+                            ◎
+                        </div>
+
+                        <button
+                            class="quick-view"
+                            aria-label="Ver produto"
+                        >
+                            <i class="fa-solid fa-eye"></i>
+                        </button>
+
+                    </div>
+
+
+                    <div class="product-info">
+
+                        <span class="product-category">
+                            ARGOLA
+                        </span>
+
+                        <h3>
+                            Argola tripla trançada 
+                        </h3>
+
+                        <p>
+                            Elegância e personalidade.
+                        </p>
+
+
+                        <div class="product-bottom">
+
+                            <strong>
+                                R$ 78,00
+                            </strong>
+
+                            <button class="buy-btn">
+                                Comprar
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= SERVIÇOS ================= -->
+        <section class="products section" id="servicos" aria-label="Serviços" hidden>
+            <div class="section-header">
+                <div>
+                    <span class="eyebrow">ATENDIMENTO</span>
+                    <h2>Conheça nossos <em>serviços.</em></h2>
+                </div>
+            </div>
+            <div class="product-grid">
+                <article class="product-card service-card" data-type="service" data-description="Realização de perfurações corporais com técnica, segurança e atenção aos detalhes. Cada procedimento é realizado após avaliação individual da anatomia, considerando a escolha da perfuração e da joia mais adequada para você">
+                    <div class="product-image image-gold">
+                       <img class="card-photo loaded" src="images/servicos/perfuracao.jpg" alt="perfuracao" loading="lazy">
+                        <button class="quick-view service-quick-view" type="button" aria-label="Ver detalhes de Perfurações">
+                            <i class="fa-solid fa-eye"></i>
+                        </button>
+                    </div>
+                    <div class="product-info"><h3>Perfurações</h3><p>Perfurações auriculares, faciais e corporais
+                                                                    Furo humanizado em bebês</p></div>
+                </article>
+                <article class="product-card service-card" data-type="service" data-description="Seleção de joias para piercing que unem qualidade, elegância e personalidade. Curadoria personalizada para ajudar você a encontrar modelos, materiais e acabamentos que valorizem seu estilo, suas preferências e as necessidades de cada perfuração.">
+                    <div class="product-image image-crystal">
+                        <img class="card-photo loaded" src="images/servicos/joias.jpg" alt="joia" loading="lazy">
+                        <button class="quick-view service-quick-view" type="button" aria-label="Ver detalhes de Curadoria de Orelha">
+                            <i class="fa-solid fa-eye"></i>
+                        </button>
+                    </div>
+                    <div class="product-info"><h3>Joias e Curadoria</h3><p> Venda e curadoria de joias
+                                                                            Projetos auriculares personalizados</p></div>
+                </article>
+                <article class="product-card service-card" data-type="service" data-description="Atendimento para troca de joias, substituição temporária para exames quando necessária e atualização de modelos. O procedimento é realizado após avaliação da perfuração e de sua cicatrização, com atenção ao conforto, à compatibilidade da joia e às necessidades de cada cliente.">
+                    <div class="product-image image-gold">
+                        <img class="card-photo loaded" src="images/joias/argola-dourada.jpg" alt="Navete em zircônia Gold " loading="lazy">
+                        <button class="quick-view service-quick-view" type="button" aria-label="Ver detalhes de Troca e Aplicação de Joias">
+                            <i class="fa-solid fa-eye"></i>
+                        </button>
+                    </div>
+                    <div class="product-info"><h3>Trocas e Atualizações</h3><p>Troca de joias
+                                                    Troca temporária para exames, quando indicada, Atualização de joias</p></div>
+                                                     
+                </article>
+                <article class="product-card service-card" data-type="service" data-description="Um momento dedicado ao cuidado e à manutenção das suas joias e perfurações. Serviço de limpeza das joias e avaliação da região, com orientações individualizadas de higiene e cuidados adequados. Uma experiência de atenção aos detalhes para manter sua composição bonita e bem cuidada.">
+                    <div class="product-image image-crystal">
+                       <img class="card-photo loaded" src="images/servicos/troca.jpg" alt="troca" loading="lazy">
+                        <button class="quick-view service-quick-view" type="button" aria-label="Ver detalhes de Avaliação e Acompanhamento">
+                            <i class="fa-solid fa-eye"></i>
+                        </button>
+                    </div>
+                    <div class="product-info"><h3>Cuidados e Bem-estar</h3><p>Spa das Orelhas
+                                                                              Limpeza e manutenção das joias
+                                                                              Avaliação e orientações de cuidados</p></div>
+                </article>
+            </div>
+        </section>
+
+        <!-- ================= BUTTON PRODUCT ================= -->
+<section class="button-product">
+    <a href="produtos.html" class="btn-produtos">
+        Ver todos os produtos
+    </a>
+</section>
+
+        <!-- ================= SOBRE ================= -->
+        <section class="about section" id="sobre">
+
+            <div class="about-visual reveal">
+
+                <div class="about-image">
+
+                    <img class="about-logo" src="images/logo-lili-teixeira.jpg" alt="Logotipo Lili Teixeira Body piercing" loading="lazy">
+
+                </div>
+
+
+                <div class="about-badge">
+
+                    <strong>100%</strong>
+
+                    <span>
+                        atendimento<br>
+                        personalizado
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="about-content reveal">
+
+                <span class="eyebrow">
+                    SOBRE A LILI
+                </span>
+
+                <h2>
+                    Mais que uma joia,
+                    <em>uma forma de expressão.</em>
+                </h2>
+
+                <p>
+                    Cada piercing pode contar uma história,
+                    marcar uma fase ou simplesmente representar
+                    quem você é.
+                </p>
+
+                <p>
+                    A Lili trabalha com uma seleção de joias
+                    pensadas para quem busca personalidade,
+                    delicadeza e estilo em cada detalhe.
+                </p>
+
+
+                <div class="about-list">
+
+                    <div>
+                        <i class="fa-solid fa-check"></i>
+                        Atendimento personalizado
+                    </div>
+
+                    <div>
+                        <i class="fa-solid fa-check"></i>
+                        Diversos estilos de joias
+                    </div>
+
+                    <div>
+                        <i class="fa-solid fa-check"></i>
+                        Escolha pensada para você
+                    </div>
+
+                </div>
+
+
+                <!-- WhatsApp -->
+                <a
+                    href="https://wa.me/5547997560445?text=Olá%20Lili!%20Gostaria%20de%20conhecer%20seu%20trabalho."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn-primary"
+                >
+                    Conhecer meu trabalho
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= DEPOIMENTOS ================= -->
+        <section
+            class="testimonials section"
+            id="depoimentos"
+        >
+
+            <div class="section-title-center reveal">
+
+                <span class="eyebrow">
+                    EXPERIÊNCIAS
+                </span>
+
+                <h2>
+                    Quem já passou por aqui
+                    <em>ama.</em>
+                </h2>
+
+                <p>
+                    Algumas palavras de quem escolheu a Lili.
+                </p>
+
+            </div>
+
+
+            <div class="testimonial-grid">
+
+                <div class="testimonial reveal">
+
+                    <div class="stars">
+                        ★★★★★
+                    </div>
+
+                    <p>
+                        "Amei o atendimento e o cuidado na hora
+                        de escolher a joia. Ficou exatamente como
+                        eu imaginava!"
+                    </p>
+
+                    <strong>
+                        Cliente Lili
+                    </strong>
+
+                </div>
+
+
+                <div class="testimonial reveal">
+
+                    <div class="stars">
+                        ★★★★★
+                    </div>
+
+                    <p>
+                        "As joias são lindas e o atendimento fez
+                        toda a diferença. Com certeza vou voltar!"
+                    </p>
+
+                    <strong>
+                        Cliente Lili
+                    </strong>
+
+                </div>
+
+
+                <div class="testimonial reveal">
+
+                    <div class="stars">
+                        ★★★★★
+                    </div>
+
+                    <p>
+                        "Muito capricho em cada detalhe. Amei
+                        o resultado e já estou escolhendo o próximo."
+                    </p>
+
+                    <strong>
+                        Cliente Lili
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= INSTAGRAM ================= -->
+        <section class="instagram section">
+
+            <div class="instagram-content reveal">
+
+                <div class="instagram-icon">
+                    <i class="fa-brands fa-instagram"></i>
+                </div>
+
+                <span class="eyebrow">
+                    ACOMPANHE
+                </span>
+
+                <h2>
+                    @bodylili
+                </h2>
+
+                <p>
+                    Novidades, joias, inspirações e bastidores
+                    diretamente no Instagram.
+                </p>
+
+                <a
+                    href="https://www.instagram.com/bodylili/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="instagram-btn"
+                >
+                    Seguir no Instagram
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= CTA ================= -->
+        <section
+            class="cta section"
+            id="contato"
+        >
+
+            <div class="cta-content reveal">
+
+                <span class="eyebrow">
+                    VAMOS CONVERSAR?
+                </span>
+
+                <h2>
+                    Pronta para encontrar
+                    <em>sua próxima joia?</em>
+                </h2>
+
+                <p>
+                    Entre em contato pelo WhatsApp e descubra
+                    as opções disponíveis.
+                </p>
+
+            </div>
+
+
+            <!-- WhatsApp -->
+            <a
+                href="https://wa.me/5547997560445?text=Olá%20Lili!%20Quero%20saber%20mais%20sobre%20os%20piercings."
+                target="_blank"
+                rel="noopener noreferrer"
+                class="whatsapp-btn reveal"
+            >
+                <i class="fa-brands fa-whatsapp"></i>
+                Falar pelo WhatsApp
+                <i class="fa-solid fa-arrow-right"></i>
+            </a>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="site-footer">
+
+        <div class="footer-main">
+
+            <div class="footer-brand">
+                <a href="#inicio" class="logo">
+                    <span>LILI TEIXEIRA</span>
+                    <small>BODY PIERCER</small>
+                </a>
+
+                <p>Seu corpo. Sua identidade.</p>
+
+                <div class="footer-social" aria-label="Redes sociais">
+                    <a
+                        href="https://www.instagram.com/bodylili/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Instagram"
+                    >
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+
+                    <a
+                        href="https://wa.me/5547997560445"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="WhatsApp"
+                    >
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </a>
+                </div>
+            </div>
+
+            <nav class="footer-links" aria-label="Links do rodapé">
+                <h3>Navegação</h3>
+                <a href="#inicio">Início</a>
+                <a href="#produtos">Joias</a>
+                <a href="produtos.html">Produtos</a>
+                <a href="#sobre">Sobre</a>
+                <a
+                    href="https://wa.me/5547997560445?text=Olá%20Lili!%20Gostaria%20de%20entrar%20em%20contato."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >Contato</a>
+            </nav>
+
+            <div class="footer-location">
+                <h3>Localização</h3>
+
+                <div class="footer-location-content">
+                    <a
+                        class="footer-address"
+                        href="https://www.google.com/maps/dir/?api=1&destination=R.%20Vig%C3%A1rio%20Louren%C3%A7o%2C%20196%20-%20Alvorada%2C%20Videira%20-%20SC%2C%2089562-042"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Abrir rota para Lili Teixeira Body Piercer no Google Maps"
+                    >
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span>R. Vigário Lourenço, 196 - Alvorada<br>Videira - SC, 89562-042</span>
+                    </a>
+
+                    <a
+                        class="footer-route-btn"
+                        href="https://www.google.com/maps/dir/?api=1&destination=R.%20Vig%C3%A1rio%20Louren%C3%A7o%2C%20196%20-%20Alvorada%2C%20Videira%20-%20SC%2C%2089562-042"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <i class="fa-solid fa-route"></i>
+                        Como chegar
+                    </a>
+                </div>
+
+                <div class="footer-map">
+                    <iframe
+                        src="https://www.google.com/maps?q=R.%20Vig%C3%A1rio%20Louren%C3%A7o%2C%20196%20-%20Alvorada%2C%20Videira%20-%20SC%2C%2089562-042&output=embed"
+                        title="Mapa da localização de Lili Teixeira Body Piercer"
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                        allowfullscreen
+                    ></iframe>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <span>© <span id="current-year">2026</span> Lili Teixeira | Body Piercer</span>
+            <span>Todos os direitos reservados.</span>
+        </div>
+
+    </footer>
+
+
+    <!-- ================= MODAL PRODUTO ================= -->
+    <div
+        class="modal"
+        id="product-modal"
+    >
+
+        <div class="modal-overlay"></div>
+
+        <div class="modal-content">
+
+            <button
+                class="modal-close"
+                id="modal-close"
+                aria-label="Fechar"
+            >
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+
+            <div class="modal-image" id="modal-image">
+
+                <i class="fa-solid fa-gem"></i>
+
+            </div>
+
+
+            <div class="modal-info">
+
+                <span class="product-category" id="modalCategory">
+                    PIERCING
+                </span>
+
+                <h2 id="modal-title">
+                    Produto
+                </h2>
+
+                <p id="modalDescription">
+                    Descrição do produto.
+                </p>
+
+                <strong id="modalPrice">
+                    R$ 00,00
+                </strong>
+
+
+                <!-- WhatsApp -->
+                <a
+                    href="#"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="modal-buy"
+                    id="modalBuy"
+                >
+                    <i class="fa-brands fa-whatsapp"></i>
+                    Quero essa joia
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= BOTÃO TOPO ================= -->
+    <button
+        class="back-top"
+        id="back-to-top"
+        aria-label="Voltar ao topo"
+    >
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+
+    <!-- JavaScript -->
+    <script src="script.js" defer></script>
+
+
+</body>
+
+</html>
