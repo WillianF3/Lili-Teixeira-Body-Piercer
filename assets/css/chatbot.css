@@ -1,0 +1,44 @@
+/* Lili Body Piercer — atendimento virtual, isolado do layout existente. */
+.lili-chat { position:fixed; right:clamp(12px,2.2vw,28px); bottom:calc(20px + env(safe-area-inset-bottom)); z-index:9200; font-family:'DM Sans',sans-serif; color:#231913; line-height:1.45; }
+.lili-chat *, .lili-chat *::before, .lili-chat *::after { box-sizing:border-box; }
+.lili-chat__launcher { display:flex;align-items:center;justify-content:center;gap:10px; border:1px solid rgba(255,255,255,.4); border-radius:99px; padding:14px 17px; color:#fff; background:#A45F38; box-shadow:0 12px 33px rgba(91,45,23,.25); cursor:pointer; font:700 13px/1.3 'DM Sans',sans-serif; transition:transform .18s,box-shadow .18s,background .18s; }
+.lili-chat__launcher i { font-size:19px; } .lili-chat__launcher:hover { transform:translateY(-3px); background:#8A482A; box-shadow:0 15px 35px rgba(91,45,23,.31); }
+.lili-chat__panel {position:absolute;right:0;bottom:calc(100% + 14px);width:min(378px,calc(100vw - 24px));height:min(610px,calc(100dvh - 115px)); min-height:350px;overflow:hidden;display:flex;flex-direction:column;border:1px solid #e8d7ca; border-radius:20px; background:#fffdfb; box-shadow:0 21px 55px rgba(29,18,13,.25); }
+.lili-chat__panel[hidden] {display:none!important;}
+.lili-chat__header {display:flex;gap:11px;align-items:center;padding:15px 16px;background:linear-gradient(120deg,#9B5836,#C77A44); color:white;}
+.lili-chat__avatar {height:39px;width:39px;flex-shrink:0;display:grid;place-items:center;background:#ffffff28;border:1px solid #ffffff46;border-radius:50%;}
+.lili-chat__heading {display:flex;flex-direction:column;gap:2px;min-width:0;flex:1;}
+.lili-chat__heading strong {font-size:14px;font-weight:700;color:white;}
+.lili-chat__heading small {font-size:11px;color:#fff2e9;}
+.lili-chat__close {width:34px;height:34px;border:0;color:#fff;background:#ffffff21;border-radius:50%;cursor:pointer;display:grid;place-items:center;}
+.lili-chat__close:hover {background:#ffffff39;}
+.lili-chat__messages {display:flex;flex-direction:column;flex:1;min-height:0;overflow-y:auto;gap:11px;padding:19px 14px 14px;background:linear-gradient(180deg,#fff9f5,#fffdfb 40%);overscroll-behavior:contain;}
+.lili-chat__message {max-width:88%;padding:11px 13px;border-radius:15px;font-size:13px;line-height:1.6;white-space:pre-wrap;overflow-wrap:anywhere;}
+.lili-chat__message--assistant {align-self:flex-start;background:white;border:1px solid #eadad0;color:#39281f;border-bottom-left-radius:5px;}
+.lili-chat__message--user {align-self:flex-end;background:#AB633D;color:white;border-bottom-right-radius:5px;}
+.lili-chat__message.is-pending {opacity:.7;font-style:italic;}
+.lili-chat__suggestions {padding:5px 12px 9px;display:flex;gap:7px;flex-wrap:wrap;max-height:112px;overflow-y:auto;background:#fffdfb;}
+.lili-chat__suggestions:empty {display:none;}
+.lili-chat__chip {padding:7px 10px;border:1px solid #E2C3AE;background:#fff9f5;color:#834828;border-radius:30px;font:600 11px/1.4 'DM Sans',sans-serif;cursor:pointer;}
+.lili-chat__chip:hover {background:#F5E8DF;}
+.lili-chat__chip:disabled {opacity:.6;cursor:not-allowed;}
+.lili-chat__footer {border-top:1px solid #ecdcd2;padding:10px 12px 12px;background:#fffdfb;}
+.lili-chat__label {position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
+.lili-chat__form {display:flex;align-items:center;gap:7px;}
+.lili-chat__input {width:100%;flex:1;min-width:0;height:42px;border-radius:24px;border:1px solid #e5cdbd;background:#fff;color:#2a1b14;font:13px 'DM Sans',sans-serif;padding:0 14px;outline-offset:2px;}
+.lili-chat__input:focus {border-color:#B16A45;box-shadow:0 0 0 3px #C77A4429;}
+.lili-chat__send {height:42px;width:42px;flex-shrink:0;border-radius:50%;border:0;background:#B16A45;color:#fff;cursor:pointer;}
+.lili-chat__send:disabled {opacity:.5;cursor:wait;}
+.lili-chat__fineprint {margin:8px 2px 2px;text-align:center;font-size:10px;color:#7B685C;}
+.lili-chat__whatsapp {display:block;text-align:center;margin-top:8px;padding:9px 10px;border-radius:10px;background:#E6F5E8;text-decoration:none;color:#22633E!important;font:700 12px 'DM Sans',sans-serif;}
+.lili-chat__whatsapp:hover {background:#D5EEDD;}
+.lili-chat :is(button,input,a):focus-visible {outline:3px solid #B97750;outline-offset:2px;}
+/* Impede sobreposição com o botão de voltar ao topo. */
+body:has(.lili-chat) .back-top {right:clamp(12px,2.2vw,28px);bottom:calc(88px + env(safe-area-inset-bottom));}
+@media (max-width:600px){
+ .lili-chat {right:12px;bottom:calc(14px + env(safe-area-inset-bottom));}
+ .lili-chat__launcher {padding:12px 14px;font-size:12px;}
+ .lili-chat__panel {height:min(590px,calc(100dvh - 103px));border-radius:18px;}
+ body:has(.lili-chat) .back-top {right:12px;bottom:calc(78px + env(safe-area-inset-bottom));}
+}
+@media (prefers-reduced-motion:reduce){.lili-chat__launcher{transition:none}}

@@ -1,0 +1,125 @@
+/*
+ * ESTILOS EXCLUSIVOS DA PÁGINA INICIAL.
+ * Atalhos Joias/Serviços e cards de serviço.
+ * Estilos globais estão em assets/css/main.css; cores em assets/css/theme.css.
+ */
+.section-shortcuts {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 16px;
+            padding: 32px 20px;
+        }
+        .section-shortcuts .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 150px;
+        }
+        #produtos, #servicos, #sobre { scroll-margin-top: 90px; }
+        #produtos[hidden], #servicos[hidden] { display: none; }
+        .section-shortcuts button { cursor: pointer; border: 0; }
+        .section-shortcuts button:not(.is-selected) { background: transparent; color: var(--wine); outline: 1px solid var(--wine); }
+        .service-card .product-image { height: 180px; font-size: 48px; color: var(--wine); }
+        .service-card .product-info p { font-size: 14px; line-height: 1.6; margin-bottom: 0; }
+
+/* Faixa de atalhos com rolagem nativa para toque e trackpad. */
+.studio-strip {
+    background: var(--terracotta);
+    color: #21140d;
+    padding: 10px 0;
+}
+
+.studio-strip-links {
+    display: flex;
+    gap: 8px;
+    width: min(100%, 1120px);
+    margin: 0 auto;
+    padding: 5px 16px 9px;
+    list-style: none;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    scroll-padding-inline: 16px;
+    scrollbar-color: #63381f transparent;
+    scrollbar-width: thin;
+}
+
+.studio-strip-links li {
+    flex: 1 0 auto;
+    scroll-snap-align: start;
+}
+
+.studio-strip-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    min-height: 48px;
+    padding: 8px 15px;
+    border: 1px solid #63381f;
+    border-radius: 999px;
+    color: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.studio-strip-links a:hover,
+.studio-strip-links a:focus-visible {
+    background: #21140d;
+    color: #fff2e5;
+}
+
+.studio-strip-links a:focus-visible {
+    outline: 2px solid #21140d;
+    outline-offset: 2px;
+}
+
+.studio-strip-hint { display: none; }
+
+.benefit-icon { flex-shrink: 0; }
+.benefit-icon svg { width: 25px; height: 25px; }
+
+@media (max-width: 850px) {
+    .studio-strip-hint {
+        display: block;
+        margin: 0;
+        padding-inline: 16px;
+        font-size: 13px;
+        font-weight: 700;
+    }
+
+    .section-shortcuts { gap: 12px; padding: 24px 16px; }
+    .section-shortcuts .btn-primary { min-height: 48px; min-width: min(140px, 100%); }
+    .hero-carousel .carousel-control { min-width: 44px; min-height: 44px; }
+}
+
+.hero-carousel .carousel-shop-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 48px;
+    margin-inline-start: 12px;
+    padding: 9px 14px;
+    border: 1px solid #e8c29d;
+    border-radius: 50px;
+    background: rgba(28, 19, 14, .76);
+    color: #fff4e7;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.hero-carousel .carousel-shop-link:hover,
+.hero-carousel .carousel-shop-link:focus-visible {
+    background: #fff4e7;
+    color: #21140d;
+}
+
+@media (max-width: 600px) {
+    .hero-carousel .carousel-shop-link {
+        display: flex;
+        width: fit-content;
+        margin: 10px 0 0;
+    }
+}

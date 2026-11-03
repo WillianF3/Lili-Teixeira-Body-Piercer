@@ -1,0 +1,320 @@
+/* PALETA DA MARCA: carregada por último para prevalecer sobre os estilos-base.
+ * IMPORTANTE: mantém a sombra e a borda BRANCAS da seção Sobre a Lili.
+ */
+
+/* =====================================================================
+   LILI TEIXEIRA — NOVA IDENTIDADE TERRACOTA
+   Cores aprovadas: Terracotta #C77A44 | Off-white #FAF8F5
+                    Charcoal / Black #000000 | Warm Taupe #BCA985
+   Carregado após os CSS originais para preservar JS, efeitos e SEO.
+   ===================================================================== */
+:root {
+  --terracotta: #C77A44;
+  --terracotta-deep: #99562F;
+  --off-white: #FAF8F5;
+  --charcoal: #000000;
+  --taupe: #BCA985;
+  --text-soft: #66584D;
+  --hairline: rgba(115, 77, 52, .18);
+  --panel-shadow: 0 14px 42px rgba(24, 18, 13, .075);
+  /* Conectando os estilos existentes à nova paleta. */
+  --black: #000000;
+  --black-soft: #171310;
+  --wine: #C77A44;
+  --wine-light: #BCA985;
+  --gold: #BCA985;
+  --cream: #FAF8F5;
+  --cream-dark: #BCA985;
+  --white: #FAF8F5;
+  --gray: #66584D;
+  --gray-light: #BCA985;
+  --border: rgba(115, 77, 52, .22);
+  --fx-copper: #C77A44;
+  --fx-champagne: #BCA985;
+  --fx-glint: rgba(188, 169, 133, .36);
+  --hero-gold: #C77A44;
+  --hero-gold-light: #E9BD98;
+}
+
+body { background: var(--off-white); color: var(--charcoal); }
+::selection { background: var(--terracotta); color: var(--off-white); }
+a, button { -webkit-tap-highlight-color: transparent; }
+:where(a, button, input, select, textarea):focus-visible {
+  outline: 3px solid var(--terracotta);
+  outline-offset: 3px;
+}
+
+/* Cabeçalho: off-white sutil, tipografia carvão e destaque terracota. */
+.header, .header.scrolled {
+  background: rgba(250, 248, 245, .95);
+  border-bottom: 1px solid rgba(188, 169, 133, .32);
+  box-shadow: 0 6px 26px rgba(35, 24, 18, .055);
+}
+.header .nav a, .nav a { color: #221B17; }
+.nav a:hover, .nav a:focus-visible { color: var(--terracotta-deep); }
+.nav a::after { background: var(--terracotta); height: 2px; }
+.btn-header {
+  background: var(--terracotta); color: #fff;
+  border: 1px solid rgba(110, 56, 27, .17);
+  box-shadow: 0 7px 21px rgba(199,122,68,.15);
+}
+.btn-header:hover { background: var(--terracotta-deep); color:#fff; }
+
+/* Banner: contraste preto, iluminação terracota e tipografia off-white. */
+.hero-carousel { background: #000; }
+.hero-carousel .carousel-slide::after {
+  background:
+    linear-gradient(90deg, rgba(0,0,0,.95) 0%, rgba(11,8,7,.79) 37%, rgba(14,9,7,.25) 79%),
+    radial-gradient(circle at 70% 48%, rgba(199,122,68,.15), transparent 55%),
+    linear-gradient(0deg, rgba(0,0,0,.5), transparent 35%);
+}
+.hero-carousel .carousel-label,
+.hero-carousel .carousel-label::before { color: #E9B488; }
+.hero-carousel .carousel-label::before { background: var(--terracotta); }
+.hero-carousel .carousel-content h1,
+.hero-carousel .carousel-content h2 { color: var(--off-white); }
+.hero-carousel .carousel-content h1 em,
+.hero-carousel .carousel-content h2 em { color: #E9BD98; }
+.hero-carousel .carousel-content p { color: #E4D7CB; }
+.hero-carousel .carousel-button {
+  background: var(--terracotta);
+  border: 1px solid #E5AF87;
+  color:#fff;
+  box-shadow: 0 11px 32px rgba(199,122,68,.24);
+}
+.hero-carousel .carousel-button:hover {
+  color:#fff; background: var(--terracotta-deep);
+  box-shadow: 0 15px 35px rgba(199,122,68,.35);
+}
+.hero-carousel .carousel-control {
+  border-color: rgba(250,248,245,.55);
+  background: rgba(0,0,0,.48);
+  color: var(--off-white);
+}
+.hero-carousel .carousel-control:hover {
+  border-color: var(--taupe);
+  background: rgba(199,122,68,.35);
+  box-shadow: 0 0 25px rgba(199,122,68,.25);
+}
+.hero-carousel .carousel-dot { background: rgba(250,248,245,.42); }
+.hero-carousel .carousel-dot.active {
+  background: var(--terracotta);
+  box-shadow: 0 0 13px rgba(199,122,68,.35);
+}
+
+/* FAIXA: REMOÇÃO TOTAL do clareamento branco das laterais. */
+.marquee {
+  position: relative;
+  display: block;
+  width: 100%;
+  background: var(--terracotta) !important;
+  color: #17100C;
+  border: 0;
+  border-top: 1px solid rgba(250,248,245,.22);
+  border-bottom: 1px solid rgba(0,0,0,.18);
+  box-shadow: none !important;
+  -webkit-mask: none !important;
+  mask: none !important;
+  -webkit-mask-image: none !important;
+  mask-image: none !important;
+  opacity: 1;
+}
+.marquee::before, .marquee::after { content: none !important; }
+.marquee-track { color: #1C130E; }
+.marquee-track span { color: #1C130E; text-shadow: none; }
+.marquee-track i { color: var(--off-white); text-shadow: none; }
+
+/* Benefícios: faixa carvão com cartões de contorno taupe. */
+.benefits {
+  background: #100C0A;
+  color: var(--off-white);
+  border-color: rgba(188,169,133,.33);
+}
+.benefits .benefit {
+  border: 1px solid rgba(188,169,133,.26);
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(188,169,133,.10), rgba(199,122,68,.03));
+  padding: 22px;
+}
+.benefit-icon { border-color: rgba(199,122,68,.45); color:#E2A879; }
+.benefit-icon i { color: #E2A879; }
+.benefit h3 { color: var(--off-white); }
+.benefit p { color:#CEBAA7; }
+
+/* Seletor Joias/Serviços. */
+.section-shortcuts { background: #FAF8F5; }
+.section-shortcuts .btn-primary,
+.section-shortcuts button {
+  min-height: 44px;
+  border-radius: 999px;
+  font-weight: 700;
+}
+.section-shortcuts button.is-selected { background:var(--terracotta); color:#fff; }
+.section-shortcuts button:not(.is-selected) {
+  background:transparent; color:#7D462B;
+  outline:1px solid rgba(153,86,47,.40);
+}
+.section-shortcuts button:not(.is-selected):hover {
+  background:rgba(199,122,68,.09); color:#7D462B;
+}
+
+/* Coleção e serviços: off-white + cartões claros com detalhes em terracota. */
+.products { background:var(--off-white); }
+.eyebrow { color:var(--terracotta-deep); }
+.section-header h1, .section-header h2,
+.section-title-center h2 { color:#1B1512; }
+.section-header h1 em, .section-header h2 em,
+.section-title-center h2 em { color:var(--terracotta-deep); }
+.product-grid { gap: clamp(14px, 2vw, 26px); }
+.product-card {
+  background: #fff;
+  border: 1px solid rgba(188,169,133,.38);
+  border-radius: 18px;
+  box-shadow: var(--panel-shadow);
+}
+.product-card:hover {
+  border-color: rgba(199,122,68,.68);
+  box-shadow: 0 19px 46px rgba(130,79,41,.17);
+}
+.product-image { background-color: #F0E8DF; }
+.image-gold { background:radial-gradient(circle at 45% 30%, #FFFBF6, #E7D6C3); }
+.image-crystal { background:radial-gradient(circle at 40% 30%, #FFFDF9, #E8E1D7); }
+.image-rose { background:radial-gradient(circle at 42% 34%, #F5E4D5, #D7A17D); }
+.image-dark { background:radial-gradient(circle at 48% 34%, #37302A, #110E0C); }
+.product-info { color: #1E1916; }
+.product-info p { color:#66584D; }
+.product-category { color:#915331; }
+.product-tag { background:var(--terracotta); color:#fff; }
+.quick-view {
+  background: rgba(250,248,245,.94);
+  color: #251910;
+  border:1px solid rgba(188,169,133,.45);
+}
+.quick-view:hover { background: var(--terracotta); color:#fff; }
+.buy-btn {
+  background:var(--terracotta);
+  color:#fff;
+  border-color:var(--terracotta);
+}
+.buy-btn:hover { background:var(--terracotta-deep); color:#fff; }
+.btn-produtos, .btn-primary {
+  background: var(--terracotta);
+  border-color:var(--terracotta);
+  color: #fff;
+}
+.btn-produtos:hover, .btn-primary:hover {
+  background:var(--terracotta-deep);
+  border-color:var(--terracotta-deep);
+  color:#fff;
+}
+.products-page .filter-btn { border-color:rgba(153,86,47,.33); color:#40291D; }
+.products-page .filter-btn.active, .products-page .filter-btn:hover {
+  background:var(--terracotta);
+  border-color:var(--terracotta);
+  color:#fff;
+}
+.products-page .page-back { color:var(--terracotta-deep); }
+
+/* Sobre: taupe acolhedor com texto carvão. */
+.about {
+  background:#BCA985;
+  color:#18120F;
+}
+.about-image {
+  background:radial-gradient(circle at 45% 30%, #E5C8AC, #C77A44 85%);
+  /* Contorno branco + sombra luminosa neutra (sem halo terracota). */
+  box-shadow:0 0 0 2px rgba(255,255,255,.95), 0 0 0 12px rgba(255,255,255,.18), 0 14px 48px rgba(255,255,255,.28);
+}
+.about-badge {
+  background:var(--off-white);
+  box-shadow:0 12px 32px rgba(28,16,10,.17);
+}
+.about-badge strong { color:var(--terracotta-deep); }
+.about-content .eyebrow { color:#65351C; }
+.about-content h2, .about-content p, .about-list { color: #22160F; }
+.about-content h2 em { -webkit-text-fill-color:#71391B; color:#71391B; background:none; }
+.about-list i { color:#71391B; }
+
+/* Depoimentos e Instagram: respiram entre as seções. */
+.testimonials { background:#F6F1EB; }
+.testimonial {
+  background:var(--off-white);
+  border:1px solid rgba(188,169,133,.46);
+  box-shadow:0 8px 25px rgba(36,22,14,.045);
+}
+.testimonial:hover { border-color:var(--terracotta); }
+.stars { color:var(--terracotta); }
+.testimonial p { color:#32251C; }
+.testimonial strong { color:var(--terracotta-deep); }
+.instagram { background:var(--off-white); }
+.instagram-icon { background:#1A120E; color:#E5B08C; }
+.instagram-icon::before, .instagram-icon::after { border-color:var(--terracotta); }
+.instagram-content h2 { color:#18120E; }
+.instagram-content p { color:#66584D; }
+.instagram-btn { background:#17110E; color:var(--off-white); }
+.instagram-btn:hover { background:var(--terracotta); color:#fff; }
+
+/* CTA e rodapé: contraste forte e acabamento taupe. */
+.cta {
+  background:linear-gradient(122deg, #0D0A08 0%, #20150F 58%, #633B25 100%);
+  border:1px solid rgba(188,169,133,.42);
+  box-shadow:0 22px 55px rgba(39,22,11,.15);
+}
+.cta .eyebrow { color:#E3B794; }
+.cta h2 { color:var(--off-white); }
+.cta h2 em { background:none; -webkit-text-fill-color:#E3B794; color:#E3B794; }
+.cta p { color:#DBCCBC; }
+.whatsapp-btn { background:var(--terracotta); color:#fff; }
+.whatsapp-btn:hover { background:var(--off-white); color:#703F22; }
+.site-footer { background:#0E0B09; color:var(--off-white); }
+.site-footer::before { background:linear-gradient(90deg, var(--terracotta), var(--taupe), var(--terracotta)); }
+.footer-brand p, .footer-links a, .footer-bottom, .footer-location { color:#D3C5B7; }
+.footer-links a:hover { color:#E3B794; }
+.footer-social a { border-color:rgba(188,169,133,.50); color:var(--taupe); }
+.footer-social a:hover { background:var(--terracotta); border-color:var(--terracotta); color:#fff; }
+.footer-bottom { border-top:1px solid rgba(188,169,133,.28); }
+.footer-route-btn { background:transparent; border-color:var(--taupe); color:#E0CBB8; }
+.footer-route-btn:hover { border-color:var(--terracotta); color:#fff; }
+
+/* Modal e botão de subir seguem a mesma linguagem. */
+.modal-content { background:var(--off-white); color:#1B1512; }
+.modal-info p { color: #66584D; }
+.modal-buy { background:var(--terracotta); color:#fff; }
+.modal-buy:hover { background:var(--terracotta-deep); color:#fff; }
+.back-top { background:var(--terracotta); color:#fff; }
+.back-top:hover { background:var(--terracotta-deep); }
+
+@media(max-width:768px) {
+  .hero-carousel .carousel-slide::after {
+    background:linear-gradient(0deg,rgba(0,0,0,.97) 0%,rgba(17,9,5,.72) 48%,rgba(0,0,0,.16) 100%);
+  }
+  .benefits { gap:12px; }
+  .benefits .benefit { padding:16px; }
+  .marquee { padding-block:16px; }
+}
+@media(prefers-reduced-motion:reduce){
+  .marquee-track, .carousel-slide.active img { animation:none !important; }
+}
+
+/* V12: acesso reservado à gestão do catálogo, integrado à navegação pública. */
+.header .nav { gap: clamp(12px, 1.6vw, 25px); align-items: center; }
+.header .nav .nav-admin-link {
+  display: inline-flex; align-items: center; gap: 7px; white-space: nowrap;
+  border: 1px solid rgba(153,86,47,.28); border-radius: 50px;
+  background: rgba(199,122,68,.085); color: #7a462c;
+  padding: 9px 13px; font-weight: 700; font-size: 12px;
+  transition: background .2s ease, border-color .2s ease, transform .2s ease;
+}
+.header .nav .nav-admin-link::after { display:none; }
+.header .nav .nav-admin-link:hover, .header .nav .nav-admin-link:focus-visible {
+  background: rgba(199,122,68,.19); border-color: #c77a44; transform: translateY(-1px);
+}
+.footer-admin-link { display:inline-flex; align-items:center; gap:8px; text-decoration:none; font-size:12px; opacity:.78; transition:opacity .2s,color .2s; }
+.footer-admin-link:hover,.footer-admin-link:focus-visible { opacity:1; color:#c77a44; }
+.products-admin-footer { display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap; align-items:center; padding:28px max(5vw,22px); border-top:1px solid rgba(188,169,133,.33); background:#17110e; color:#f2e7dc; font-size:12px; }
+@media(max-width:850px) {
+  .header .nav { align-items:stretch; gap:4px; }
+  .header .nav .nav-admin-link { justify-content:center; margin:9px 0 2px; min-height:48px; padding:12px 16px; }
+}
+@media(min-width:851px) and (max-width:1240px) { .header,.header.scrolled { padding-left:3%;padding-right:3%; } .header .logo img {max-width:160px;} .header .nav {gap:12px;} .header .nav a {font-size:12px;} }
+@media(prefers-reduced-motion:reduce){.header .nav .nav-admin-link{transition:none;}}

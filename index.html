@@ -5,21 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
-    <meta
-        name="description"
-        content="Lili Teixeira | Body Piercer. Piercings, joias e acessórios para expressar seu estilo."
-    >
+    
 
-    <title>Lili Teixeira | Body Piercer</title>
+    <title>Piercing e Furo de Orelha em Videira | Lili Teixeira</title>
 <!-- Favicon -->
-    <link
-        rel="icon"
-        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E✦%3C/text%3E%3C/svg%3E"
-    >
+    
 
     <!-- Recursos visíveis no primeiro carregamento -->
     <link rel="preload" as="image" href="images/logo-header.png">
-    <link rel="preload" as="image" href="images/carrossel-1.jpg" fetchpriority="high">
+    <link rel="preload" as="image" href="images/carrossel-1.webp" type="image/webp" fetchpriority="high">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -36,29 +30,117 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     >
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="style.css">
-    <style>
-        .section-shortcuts {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 16px;
-            padding: 32px 20px;
-        }
-        .section-shortcuts .btn-primary {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            min-width: 150px;
-        }
-        #produtos, #servicos, #sobre { scroll-margin-top: 90px; }
-        #produtos[hidden], #servicos[hidden] { display: none; }
-        .section-shortcuts button { cursor: pointer; border: 0; }
-        .section-shortcuts button:not(.is-selected) { background: transparent; color: var(--wine); outline: 1px solid var(--wine); }
-        .service-card .product-image { height: 180px; font-size: 48px; color: var(--wine); }
-        .service-card .product-info p { font-size: 14px; line-height: 1.6; margin-bottom: 0; }
-    </style>
+    <!-- ESTILOS: base → animações → carrossel → página → identidade visual. A ordem preserva a prioridade do CSS. -->
+    <link rel="stylesheet" href="assets/css/main.css?v=14">
+    <link rel="stylesheet" href="assets/css/effects.css?v=4">
+    <link rel="stylesheet" href="assets/css/hero-premium.css?v=4">
+    
+    <!-- SEO: domínio de produção configurado como https://lilibody.com (confirme antes da publicação). -->
+    <meta name="description" content="Body piercing e furo de orelha em Videira, SC, com Lili Teixeira. Perfurações, curadoria e troca de joias no bairro Alvorada. Agende pelo WhatsApp.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="googlebot" content="index, follow, max-image-preview:large">
+    <meta name="theme-color" content="#C77A44">
+    <link rel="canonical" href="https://lilibody.com/">
+    <link rel="alternate" hreflang="pt-BR" href="https://lilibody.com/">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:site_name" content="Lili Teixeira | Body Piercer">
+    <meta property="og:title" content="Piercing e Furo de Orelha em Videira | Lili Teixeira">
+    <meta property="og:description" content="Body piercing e furo de orelha em Videira, SC, com Lili Teixeira. Perfurações, curadoria e troca de joias no bairro Alvorada. Agende pelo WhatsApp.">
+    <meta property="og:url" content="https://lilibody.com/">
+    <meta property="og:image" content="https://lilibody.com/images/carrossel-1.jpg">
+    <meta property="og:image:alt" content="Lili Teixeira — Joias e Body Piercing">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Piercing e Furo de Orelha em Videira | Lili Teixeira">
+    <meta name="twitter:description" content="Body piercing e furo de orelha em Videira, SC, com Lili Teixeira. Perfurações, curadoria e troca de joias no bairro Alvorada. Agende pelo WhatsApp.">
+    <meta name="twitter:image" content="https://lilibody.com/images/carrossel-1.jpg">
+    
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://lilibody.com/#website",
+      "url": "https://lilibody.com/",
+      "name": "Lili Teixeira | Body Piercer",
+      "inLanguage": "pt-BR"
+    },
+    {
+      "@type": "HealthAndBeautyBusiness",
+      "@id": "https://lilibody.com/#estudio",
+      "name": "Lili Teixeira | Body Piercer",
+      "url": "https://lilibody.com/",
+      "description": "Body piercing e furo de orelha em Videira, SC. Perfurações auriculares, faciais e corporais, curadoria e troca de joias no bairro Alvorada.",
+      "image": "https://lilibody.com/images/carrossel-1.jpg",
+      "logo": "https://lilibody.com/images/logo-header.png",
+      "telephone": "+55 47 99756-0445",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Rua Vigário Lourenço, 196 - Alvorada",
+        "addressLocality": "Videira",
+        "addressRegion": "SC",
+        "postalCode": "89562-042",
+        "addressCountry": "BR"
+      },
+      "areaServed": {
+        "@type": "City",
+        "name": "Videira"
+      },
+      "sameAs": [
+        "https://www.instagram.com/bodylili/"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Serviços de body piercing e joias",
+        "itemListElement": [
+          {
+            "@type": "OfferCatalog",
+            "name": "Perfurações"
+          },
+          {
+            "@type": "OfferCatalog",
+            "name": "Curadoria de joias"
+          },
+          {
+            "@type": "OfferCatalog",
+            "name": "Troca e atualização de joias"
+          },
+          {
+            "@type": "OfferCatalog",
+            "name": "Cuidados e acompanhamento"
+          }
+        ]
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://lilibody.com/#pagina-inicial",
+      "url": "https://lilibody.com/",
+      "name": "Piercing e Furo de Orelha em Videira | Lili Teixeira",
+      "inLanguage": "pt-BR",
+      "about": {
+        "@id": "https://lilibody.com/#estudio"
+      },
+      "isPartOf": {
+        "@id": "https://lilibody.com/#website"
+      },
+      "description": "Body piercing e furo de orelha em Videira, SC, com Lili Teixeira. Perfurações, curadoria e troca de joias no bairro Alvorada. Agende pelo WhatsApp."
+    }
+  ]
+}
+</script>
+    <!-- Identidade visual terracota: último CSS carregado para manter os efeitos e o contraste. -->
+    <link rel="stylesheet" href="assets/css/theme.css?v=4">
+    <link rel="stylesheet" href="assets/css/pages/home.css?v=6">
+<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<style>.lili-local-faq{max-width:1200px;margin-inline:auto;padding-inline:clamp(20px,5vw,64px)}.lili-local-faq details{border-bottom:1px solid #dacfc3;padding:20px 0}.lili-local-faq summary{cursor:pointer;font-weight:600;line-height:1.5}.lili-local-faq details p{max-width:850px;line-height:1.75;margin:16px 0 0}.lili-local-faq a{color:#94522c;text-decoration:underline}.lili-local-faq summary:focus-visible{outline:2px solid #C77A44;outline-offset:5px}</style>
+<link rel="stylesheet" href="assets/css/chatbot.css?v=15">
 </head>
 
 <body>
@@ -78,7 +160,7 @@
     <header class="header" id="header">
 
         <a href="#inicio" class="logo" aria-label="Lili Teixeira Body Piercing - Início">
-            <img src="images/logo-header.png" alt="Lili Teixeira Body Piercing" decoding="async">
+            <img src="images/logo-header.png" alt="Lili Teixeira Body Piercer — logotipo" width="800" height="400" decoding="async">
         </a>
 
         <nav class="nav" id="nav">
@@ -93,6 +175,8 @@
             >
     Contato
 </a>
+            <!-- Acesso administrativo: o login PHP protege o painel e os dados. -->
+            <a class="nav-admin-link" href="/admin/login.php" aria-label="Acessar área administrativa"><i class="fa-solid fa-lock" aria-hidden="true"></i> Administração</a>
         </nav>
 
         <!-- WhatsApp -->
@@ -126,39 +210,40 @@
 
 
       <!-- ================= CARROSSEL ================= -->
-<section class="hero-carousel" id="carrossel" aria-label="Destaques Lili Body Piercer">
+<section class="hero-carousel" id="inicio" aria-label="Destaques Lili Body Piercer" aria-roledescription="carrossel">
 
     <div class="carousel-slide active">
-        <img src="images/carrossel-1.jpg" alt="Lili Body Piercer" fetchpriority="high" decoding="async">
+        <img src="images/carrossel-1.webp" alt="Joias e piercings da Lili Teixeira em Videira, Santa Catarina" fetchpriority="high" decoding="async" width="1080" height="1920">
         <div class="carousel-overlay">
             <div class="carousel-content">
-                <span class="carousel-label">BODY PIERCER</span>
-                <h2>Seu corpo.<br>Sua identidade.</h2>
-                <p>Piercings e joias para destacar seu estilo.</p>
+                <span class="carousel-label">LILI TEIXEIRA · BODY PIERCER</span>
+                <h1>Piercing<br><em>em Videira.</em></h1>
+                <p>Body piercing, furo de orelha e joias para expressar sua identidade.</p>
                 <a href="https://wa.me/5547997560445?text=Olá!%20Gostaria%20de%20agendar%20um%20piercing."
                    target="_blank"
                    rel="noopener noreferrer"
                    class="carousel-button">
                     Agendar pelo WhatsApp
                 </a>
+                <a href="produtos.html" class="carousel-shop-link">Ver catálogo de joias <span aria-hidden="true">→</span></a>
             </div>
         </div>
     </div>
 
     <div class="carousel-slide">
-        <img src="images/carrossel-2.jpg" alt="Joias para piercing" loading="lazy" decoding="async">
+        <img src="images/carrossel-2.webp" alt="Joias para piercing" loading="lazy" decoding="async">
         <div class="carousel-overlay">
             <div class="carousel-content">
                 <span class="carousel-label">COLEÇÃO</span>
                 <h2>Encontre sua<br>próxima joia.</h2>
                 <p>Modelos selecionados para combinar com você.</p>
-                <a href="produtos.html" class="carousel-button">Ver produtos</a>
+                <a href="produtos.html" class="carousel-button">Explorar joias</a>
             </div>
         </div>
     </div>
 
     <div class="carousel-slide">
-        <img src="images/carrossel-3.jpg" alt="Atendimento Body Piercer" loading="lazy" decoding="async">
+        <img src="images/carrossel-3.webp" alt="Atendimento Body Piercer" loading="lazy" decoding="async">
         <div class="carousel-overlay">
             <div class="carousel-content">
                 <span class="carousel-label">ATENDIMENTO PERSONALIZADO</span>
@@ -181,13 +266,25 @@
 
 <!-- ================= HERO ================= -->
 
+        <!-- Faixa animada de serviços — preservada do pacote com efeitos -->
+        <nav class="studio-strip" aria-label="Joias e serviços do estúdio">
+            <p class="studio-strip-hint" aria-hidden="true">Deslize para explorar <span>→</span></p>
+            <ul class="studio-strip-links">
+                <li><a href="#servicos"><i class="fa-solid fa-ear-listen" aria-hidden="true"></i> Perfurações</a></li>
+                <li><a href="#produtos"><i class="fa-solid fa-gem" aria-hidden="true"></i> Curadoria de joias</a></li>
+                <li><a href="produtos.html"><i class="fa-solid fa-bag-shopping" aria-hidden="true"></i> Catálogo de joias</a></li>
+                <li><a href="#servicos"><i class="fa-solid fa-spa" aria-hidden="true"></i> Spa das orelhas</a></li>
+                <li><a href="#servicos"><i class="fa-solid fa-arrows-rotate" aria-hidden="true"></i> Troca de joias</a></li>
+            </ul>
+        </nav>
+
 <!-- ================= BENEFÍCIOS ================= -->
         <section class="benefits">
 
             <div class="benefit reveal">
 
-                <div class="benefit-icon">
-                    <i class="fa-solid fa-gem"></i>
+                <div class="benefit-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 7 8l5 5 5-5-5-6Z"/><path d="M7 8h10M9 11a6 6 0 1 0 6 0"/></svg>
                 </div>
 
                 <div>
@@ -200,8 +297,8 @@
 
             <div class="benefit reveal">
 
-                <div class="benefit-icon">
-                    <i class="fa-solid fa-heart"></i>
+                <div class="benefit-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a7.5 7.5 0 0 1-7.5 7.5H9l-5 3v-5a7.5 7.5 0 0 1 5-13h4.5a7.5 7.5 0 0 1 7.5 7.5Z"/><path d="M8 12h8m-8-4h5"/></svg>
                 </div>
 
                 <div>
@@ -214,8 +311,8 @@
 
             <div class="benefit reveal">
 
-                <div class="benefit-icon">
-                    <i class="fa-solid fa-star"></i>
+                <div class="benefit-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-3 7-10V6l-7-3-7 3v6c0 7 7 10 7 10Z"/><path d="m9 12 2 2 4-4"/></svg>
                 </div>
 
                 <div>
@@ -266,7 +363,7 @@
                 >
 
                     <div class="product-image image-gold">
-                        <img class="card-photo" src="images/joias/argola-dourada.jpg" alt="Navete em zircônia Gold " loading="lazy">
+                        <img class="card-photo" src="images/joias/argola-dourada.webp" alt="Navete em zircônia Gold " loading="lazy">
 
                         <span class="product-tag">
                             MAIS VENDIDO
@@ -329,7 +426,7 @@
                 >
 
                     <div class="product-image image-crystal">
-                        <img class="card-photo" src="images/joias/pedrinha-crystal.jpg" alt="Clúster zircônia" loading="lazy">
+                        <img class="card-photo" src="images/joias/pedrinha-crystal.webp" alt="Clúster zircônia" loading="lazy">
 
                         <div class="jewel">
                             ◇
@@ -388,7 +485,7 @@
                 >
 
                     <div class="product-image image-rose">
-                        <img class="card-photo" src="images/joias/heart-piercing.jpg" alt="Heart Piercing" loading="lazy">
+                        <img class="card-photo" src="images/joias/heart-piercing.webp" alt="Heart Piercing" loading="lazy">
 
                         <span class="product-tag">
                             NOVO
@@ -451,7 +548,7 @@
                 >
 
                     <div class="product-image image-dark">
-                        <img class="card-photo" src="images/joias/argola-premium.jpg" alt="Argola Premium" loading="lazy">
+                        <img class="card-photo" src="images/joias/argola-premium.webp" alt="Argola Premium" loading="lazy">
 
                         <div class="jewel">
                             ◎
@@ -509,13 +606,13 @@
             <div class="section-header">
                 <div>
                     <span class="eyebrow">ATENDIMENTO</span>
-                    <h2>Conheça nossos <em>serviços.</em></h2>
+                    <h2>Perfurações e <em>cuidados com suas joias.</em></h2>
                 </div>
             </div>
             <div class="product-grid">
                 <article class="product-card service-card" data-type="service" data-description="Realização de perfurações corporais com técnica, segurança e atenção aos detalhes. Cada procedimento é realizado após avaliação individual da anatomia, considerando a escolha da perfuração e da joia mais adequada para você">
                     <div class="product-image image-gold">
-                       <img class="card-photo loaded" src="images/servicos/perfuracao.jpg" alt="perfuracao" loading="lazy">
+                       <img class="card-photo loaded" src="images/servicos/perfuracao.webp" alt="perfuracao" loading="lazy">
                         <button class="quick-view service-quick-view" type="button" aria-label="Ver detalhes de Perfurações">
                             <i class="fa-solid fa-eye"></i>
                         </button>
@@ -525,7 +622,7 @@
                 </article>
                 <article class="product-card service-card" data-type="service" data-description="Seleção de joias para piercing que unem qualidade, elegância e personalidade. Curadoria personalizada para ajudar você a encontrar modelos, materiais e acabamentos que valorizem seu estilo, suas preferências e as necessidades de cada perfuração.">
                     <div class="product-image image-crystal">
-                        <img class="card-photo loaded" src="images/servicos/joias.jpg" alt="joia" loading="lazy">
+                        <img class="card-photo loaded" src="images/servicos/joias.webp" alt="joia" loading="lazy">
                         <button class="quick-view service-quick-view" type="button" aria-label="Ver detalhes de Curadoria de Orelha">
                             <i class="fa-solid fa-eye"></i>
                         </button>
@@ -535,7 +632,7 @@
                 </article>
                 <article class="product-card service-card" data-type="service" data-description="Atendimento para troca de joias, substituição temporária para exames quando necessária e atualização de modelos. O procedimento é realizado após avaliação da perfuração e de sua cicatrização, com atenção ao conforto, à compatibilidade da joia e às necessidades de cada cliente.">
                     <div class="product-image image-gold">
-                        <img class="card-photo loaded" src="images/joias/argola-dourada.jpg" alt="Navete em zircônia Gold " loading="lazy">
+                        <img class="card-photo loaded" src="images/joias/argola-dourada.webp" alt="Navete em zircônia Gold " loading="lazy">
                         <button class="quick-view service-quick-view" type="button" aria-label="Ver detalhes de Troca e Aplicação de Joias">
                             <i class="fa-solid fa-eye"></i>
                         </button>
@@ -546,7 +643,7 @@
                 </article>
                 <article class="product-card service-card" data-type="service" data-description="Um momento dedicado ao cuidado e à manutenção das suas joias e perfurações. Serviço de limpeza das joias e avaliação da região, com orientações individualizadas de higiene e cuidados adequados. Uma experiência de atenção aos detalhes para manter sua composição bonita e bem cuidada.">
                     <div class="product-image image-crystal">
-                       <img class="card-photo loaded" src="images/servicos/troca.jpg" alt="troca" loading="lazy">
+                       <img class="card-photo loaded" src="images/servicos/troca.webp" alt="troca" loading="lazy">
                         <button class="quick-view service-quick-view" type="button" aria-label="Ver detalhes de Avaliação e Acompanhamento">
                             <i class="fa-solid fa-eye"></i>
                         </button>
@@ -598,20 +695,16 @@
                 </span>
 
                 <h2>
-                    Mais que uma joia,
-                    <em>uma forma de expressão.</em>
+                    Body piercing em Videira,<br>
+                    <em>com a Lili Teixeira.</em>
                 </h2>
 
                 <p>
-                    Cada piercing pode contar uma história,
-                    marcar uma fase ou simplesmente representar
-                    quem você é.
+                    No bairro Alvorada, em Videira, SC, a Lili Teixeira oferece perfurações auriculares, faciais e corporais, além de curadoria e troca de joias. Cada atendimento começa com uma conversa sobre o que você procura.
                 </p>
 
                 <p>
-                    A Lili trabalha com uma seleção de joias
-                    pensadas para quem busca personalidade,
-                    delicadeza e estilo em cada detalhe.
+                    Para fazer um furo de orelha, escolher um novo piercing ou montar seu projeto auricular, consulte as opções e os horários pelo WhatsApp. O estúdio fica na Rua Vigário Lourenço, 196, no bairro Alvorada.
                 </p>
 
 
@@ -773,7 +866,14 @@
         </section>
 
 
-        <!-- ================= CTA ================= -->
+        <section class="section lili-local-faq" id="duvidas" aria-labelledby="lili-faq-title">
+<div class="section-header"><div><span class="eyebrow">ANTES DE AGENDAR</span><h2 id="lili-faq-title">Piercing e furo de orelha: <em>suas dúvidas.</em></h2></div></div>
+<details><summary>Onde fazer piercing em Videira?</summary><p>A Lili Teixeira Body Piercer atende na Rua Vigário Lourenço, 196, bairro Alvorada, em Videira, SC. Consulte os horários pelo <a href="https://wa.me/5547997560445?text=Ol%C3%A1%20Lili!%20Gostaria%20de%20agendar%20um%20atendimento." target="_blank" rel="noopener noreferrer">WhatsApp</a> antes de ir ao estúdio.</p></details>
+<details><summary>Como agendar um furo de orelha?</summary><p>Entre em contato com a Lili e informe a perfuração que deseja. No atendimento, são avaliadas as opções de perfuração e de joia para o seu projeto auricular. Consulte disponibilidade, valores e condições pelo WhatsApp.</p></details>
+<details><summary>Posso trocar a joia ou escolher um novo piercing?</summary><p>Sim. O estúdio oferece curadoria, venda e troca de joias, além de projetos auriculares personalizados. Veja a <a href="/produtos.html">coleção de joias para piercing</a> e converse com a Lili sobre a opção adequada ao seu caso.</p></details>
+</section>
+
+<!-- ================= CTA ================= -->
         <section
             class="cta section"
             id="contato"
@@ -904,6 +1004,7 @@
         <div class="footer-bottom">
             <span>© <span id="current-year">2026</span> Lili Teixeira | Body Piercer</span>
             <span>Todos os direitos reservados.</span>
+            <a class="footer-admin-link" href="/admin/login.php"><i class="fa-solid fa-lock" aria-hidden="true"></i> Área administrativa</a>
         </div>
 
     </footer>
@@ -983,8 +1084,8 @@
     </button>
 
 
-    <!-- JavaScript -->
-    <script src="script.js" defer></script>
+    <!-- JavaScript orientado a objetos: ponto de entrada ES module. -->
+    <script type="module" src="assets/js/main.js?v=15"></script>
 
 
 </body>

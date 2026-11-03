@@ -1,0 +1,889 @@
+/* EFEITOS VISUAIS: animações e transições usadas em conjunto com assets/js/effects/EffectsApp.js. */
+
+/* =====================================================================
+   EFEITOS VISUAIS — Lili Teixeira Body Piercer
+   Camada extra carregada DEPOIS do style.css. Para desligar tudo,
+   basta remover o <link> deste arquivo e o <script> effects.js.
+
+   Ideia central: o brilho de uma joia. Reflexos que cruzam as fotos,
+   faíscas (✦) que piscam e luz cobre/champanhe que acompanha o mouse.
+   ===================================================================== */
+
+:root {
+    --fx-copper: #C77A44;
+    --fx-champagne: #BCA985;
+    --fx-glint: rgba(255, 238, 205, .55);
+    --fx-ease: cubic-bezier(.22, .8, .24, 1);
+}
+
+/* ---------- Barra de progresso de rolagem (topo da página) ---------- */
+.fx-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    z-index: 200;
+    transform-origin: 0 50%;
+    transform: scaleX(var(--fx-p, 0));
+    background: linear-gradient(90deg, var(--fx-champagne), var(--fx-copper), #f0c999);
+    box-shadow: 0 0 12px rgba(199, 122, 68, .7);
+    pointer-events: none;
+}
+
+/* ---------- Faixa deslizante (marquee) ---------- */
+.marquee {
+    overflow: hidden;
+    background: var(--fx-copper);
+    color: #000;
+    border-block: 1px solid rgba(0, 0, 0, .25);
+    padding: 15px 0;
+    font-family: var(--font-title);
+    font-size: clamp(17px, 2.2vw, 22px);
+    font-style: italic;
+    white-space: nowrap;
+}
+
+.marquee-track {
+    display: inline-flex;
+    width: max-content;
+}
+
+.marquee-track span {
+    display: inline-flex;
+    align-items: center;
+    gap: 28px;
+    padding-right: 28px;
+}
+
+.marquee-track i {
+    font-style: normal;
+    color: var(--white);
+    font-size: .8em;
+}
+
+/* ---------- Títulos: brilho metálico nas palavras em destaque ---------- */
+.section-header h2 em,
+.about-content h2 em,
+.section-title-center h2 em,
+.cta h2 em {
+    background: linear-gradient(100deg, #a8571c 0%, #dc8f4f 35%, #b5611f 55%, #7a3f16 100%);
+    background-size: 220% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+
+.cta h2 em {
+    background-image: linear-gradient(100deg, #BCA985 0%, #fff3df 40%, #BCA985 60%, #e0b27c 100%);
+    background-size: 220% 100%;
+}
+
+/* Na seção Sobre o fundo é champanhe: tons mais escuros para manter a leitura */
+.about-content h2 em {
+    background-image: linear-gradient(100deg, #7a3f16 0%, #b5611f 40%, #7a3f16 60%, #4f2609 100%);
+}
+
+/* ---------- Cabeçalho: botão Agendar com anel pulsante ---------- */
+.btn-header {
+    position: relative;
+    isolation: isolate;
+}
+
+/* ---------- Brilho que atravessa os botões ---------- */
+.carousel-button,
+.btn-primary,
+.btn-produtos,
+.whatsapp-btn,
+.instagram-btn,
+.btn-header,
+.modal-buy {
+    position: relative;
+    overflow: hidden;
+}
+
+.carousel-button::after,
+.btn-primary::after,
+.btn-produtos::after,
+.whatsapp-btn::after,
+.instagram-btn::after,
+.btn-header::after,
+.modal-buy::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 40%;
+    transform: translateX(-160%) skewX(-22deg);
+    background: linear-gradient(90deg, transparent, var(--fx-glint), transparent);
+    pointer-events: none;
+}
+
+.carousel-button:hover::after,
+.btn-primary:hover::after,
+.btn-produtos:hover::after,
+.whatsapp-btn:hover::after,
+.instagram-btn:hover::after,
+.btn-header:hover::after,
+.modal-buy:hover::after {
+    transform: translateX(380%) skewX(-22deg);
+    transition: transform .85s var(--fx-ease);
+}
+
+/* ---------- Benefícios: ícones com halo ---------- */
+.benefit-icon {
+    position: relative;
+    border-color: rgba(188, 169, 133, .55) !important;
+    background: radial-gradient(circle, rgba(199, 122, 68, .28), transparent 70%);
+    transition: transform .4s var(--fx-ease), box-shadow .4s ease;
+}
+
+.benefit:hover .benefit-icon {
+    transform: scale(1.12) rotate(-6deg);
+    box-shadow: 0 0 22px rgba(199, 122, 68, .65);
+}
+
+/* ---------- Cards de joia / serviço ---------- */
+.product-card {
+    position: relative;
+    isolation: isolate;
+    transition: transform .5s var(--fx-ease), box-shadow .5s ease;
+}
+
+.product-card:hover {
+    box-shadow:
+        0 0 0 1px rgba(199, 122, 68, .55),
+        0 30px 60px rgba(199, 122, 68, .25);
+}
+
+/* Luz que acompanha o mouse dentro do card */
+.product-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    pointer-events: none;
+    opacity: 0;
+    background: radial-gradient(
+        280px circle at var(--mx, 50%) var(--my, 50%),
+        rgba(255, 226, 180, .30),
+        transparent 65%
+    );
+    transition: opacity .35s ease;
+}
+
+.product-card:hover::before {
+    opacity: 1;
+}
+
+/* Reflexo diagonal sobre a foto */
+.product-image::after {
+    content: "";
+    position: absolute;
+    top: -10%;
+    bottom: -10%;
+    left: 0;
+    width: 45%;
+    z-index: 2;
+    pointer-events: none;
+    transform: translateX(-170%) skewX(-20deg);
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .65), transparent);
+}
+
+.product-card:hover .product-image::after {
+    transform: translateX(340%) skewX(-20deg);
+    transition: transform 1s var(--fx-ease);
+}
+
+.product-image .card-photo {
+    transition: transform 1s var(--fx-ease), filter .6s ease;
+}
+
+.product-card:hover .product-image .card-photo {
+    transform: scale(1.09);
+    filter: saturate(1.12) contrast(1.03);
+}
+
+.buy-btn i {
+    transition: transform .35s var(--fx-ease);
+}
+
+.buy-btn:hover i {
+    transform: translateX(5px);
+}
+
+/* ---------- Seção Sobre: contorno e halo brancos em volta do logotipo ---------- */
+.about-image {
+    box-shadow:
+        0 0 0 2px rgba(255, 255, 255, .95),
+        0 0 0 12px rgba(255, 255, 255, .18),
+        0 14px 48px rgba(255, 255, 255, .28);
+}
+
+.about-badge {
+    z-index: 2;
+}
+
+/* ---------- Depoimentos ---------- */
+.testimonial {
+    position: relative;
+    overflow: hidden;
+    transition: transform .5s var(--fx-ease), box-shadow .5s ease;
+}
+
+.testimonial::before {
+    content: "\201C";
+    position: absolute;
+    top: -18px;
+    right: 18px;
+    font-family: var(--font-title);
+    font-size: 130px;
+    line-height: 1;
+    color: var(--fx-copper);
+    opacity: .16;
+    pointer-events: none;
+}
+
+.testimonial:hover {
+    box-shadow: 0 24px 50px rgba(199, 122, 68, .22);
+}
+
+.stars {
+    color: var(--fx-copper);
+}
+
+/* ---------- Instagram: anéis que se expandem ---------- */
+.instagram-icon {
+    position: relative;
+}
+
+.instagram-icon::before,
+.instagram-icon::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 1px solid var(--fx-copper);
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* ---------- CTA final: luz em movimento + faíscas ---------- */
+.cta {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+.cta::before {
+    content: "";
+    position: absolute;
+    inset: -40%;
+    z-index: -1;
+    pointer-events: none;
+    background:
+        radial-gradient(circle at 30% 35%, rgba(240, 201, 153, .38), transparent 34%),
+        radial-gradient(circle at 75% 70%, rgba(199, 122, 68, .35), transparent 38%);
+}
+
+.whatsapp-btn {
+    box-shadow: 0 0 0 0 rgba(250, 248, 245, .55);
+}
+
+/* Faíscas ✦ criadas pelo effects.js */
+.fx-spark {
+    position: absolute;
+    z-index: 0;
+    pointer-events: none;
+    color: var(--fx-champagne);
+    line-height: 1;
+    opacity: 0;
+    text-shadow: 0 0 10px rgba(255, 226, 180, .9);
+}
+
+/* Rastro de faíscas do mouse */
+.fx-trail {
+    position: fixed;
+    z-index: 9000;
+    pointer-events: none;
+    color: var(--fx-copper);
+    line-height: 1;
+    text-shadow: 0 0 8px rgba(255, 226, 180, .95);
+    transform: translate(-50%, -50%);
+}
+
+/* ---------- Botão voltar ao topo ---------- */
+.back-top.show {
+    box-shadow: 0 0 0 0 rgba(199, 122, 68, .6);
+}
+
+/* ---------- Rodapé: fio de luz no topo ---------- */
+.site-footer {
+    position: relative;
+}
+
+.site-footer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--fx-copper), #fff1d6, var(--fx-copper), transparent);
+    background-size: 200% 100%;
+}
+
+/* =====================================================================
+   MOVIMENTO — só para quem NÃO pediu redução de animações
+   ===================================================================== */
+@media (prefers-reduced-motion: no-preference) {
+
+    /* Entrada dos elementos ao rolar (ativada pelo effects.js) */
+    .fx-in {
+        opacity: 0;
+        transform: translateY(34px) scale(.97);
+        filter: blur(6px);
+        transition:
+            opacity .9s var(--fx-ease),
+            transform .9s var(--fx-ease),
+            filter .9s var(--fx-ease);
+        transition-delay: calc(var(--fx-i, 0) * 90ms);
+    }
+
+    .fx-in.visible {
+        opacity: 1;
+        transform: none;
+        filter: none;
+    }
+
+    /* Hero: zoom lento + texto entrando em sequência */
+    .carousel-slide.active img {
+        animation: fxKenBurns 9s ease-out both;
+    }
+
+    .carousel-slide.active .carousel-label,
+    .carousel-slide.active .carousel-content h2,
+    .carousel-slide.active .carousel-content p,
+    .carousel-slide.active .carousel-button {
+        animation: fxRise .9s var(--fx-ease) both;
+    }
+
+    .carousel-slide.active .carousel-label { animation-delay: .15s; }
+    .carousel-slide.active .carousel-content h2 { animation-delay: .3s; }
+    .carousel-slide.active .carousel-content p { animation-delay: .5s; }
+    .carousel-slide.active .carousel-button { animation-delay: .7s; }
+
+    /* Reflexo de luz cruzando o hero */
+    .hero-carousel::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 3;
+        pointer-events: none;
+        background: linear-gradient(105deg, transparent 38%, rgba(255, 236, 205, .20) 50%, transparent 62%);
+        background-size: 260% 100%;
+        background-repeat: no-repeat;
+        animation: fxGlint 7s ease-in-out 1.2s infinite;
+    }
+
+    /* Brilho metálico andando nas palavras em destaque */
+    .section-header h2 em,
+    .about-content h2 em,
+    .section-title-center h2 em,
+    .cta h2 em {
+        animation: fxShimmer 5s linear infinite;
+    }
+
+    /* Botão Agendar: anel pulsante */
+    .btn-header::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        z-index: -1;
+        box-shadow: 0 0 0 0 rgba(199, 122, 68, .7);
+        animation: fxPulse 2.6s ease-out infinite;
+    }
+
+    /* Faixa deslizante */
+    .marquee-track {
+        animation: fxMarquee 32s linear infinite;
+    }
+
+    .marquee:hover .marquee-track {
+        animation-play-state: paused;
+    }
+
+    /* Ícones dos benefícios flutuando */
+    .benefit-icon {
+        animation: fxFloat 4.5s ease-in-out infinite;
+    }
+
+    .benefit:nth-child(2) .benefit-icon { animation-delay: -1.5s; }
+    .benefit:nth-child(3) .benefit-icon { animation-delay: -3s; }
+
+    /* Etiquetas MAIS VENDIDO / NOVO respirando */
+    .product-tag {
+        animation: fxTag 2.8s ease-in-out infinite;
+    }
+
+    /* Halo pulsando em volta do logotipo */
+    .about-image {
+        animation: fxHalo 4.5s ease-in-out infinite;
+    }
+
+    /* Selo "100%" flutuando */
+    .about-badge {
+        animation: fxFloat 5s ease-in-out infinite;
+    }
+
+    /* Estrelas dos depoimentos acendendo em sequência */
+    .testimonial:hover .stars {
+        animation: fxTwinkle 1.2s ease-in-out;
+    }
+
+    /* Instagram: anéis expandindo */
+    .instagram-icon::before { animation: fxRing 3s ease-out infinite; }
+    .instagram-icon::after { animation: fxRing 3s ease-out 1.5s infinite; }
+
+    /* CTA: luz derivando devagar */
+    .cta::before {
+        animation: fxDrift 14s ease-in-out infinite alternate;
+    }
+
+    .whatsapp-btn {
+        animation: fxPulseLight 2.8s ease-out infinite;
+    }
+
+    .back-top.show {
+        animation: fxPulseCopper 2.8s ease-out infinite;
+    }
+
+    .site-footer::before {
+        animation: fxLine 6s linear infinite;
+    }
+
+    /* Faíscas */
+    .fx-spark {
+        animation: fxSpark var(--fx-dur, 4s) ease-in-out var(--fx-delay, 0s) infinite;
+    }
+
+    .fx-trail {
+        animation: fxTrail .9s ease-out forwards;
+    }
+
+    /* ---------- Keyframes ---------- */
+    @keyframes fxRise {
+        from { opacity: 0; transform: translateY(26px); filter: blur(4px); }
+        to { opacity: 1; transform: none; filter: none; }
+    }
+
+    @keyframes fxKenBurns {
+        from { transform: scale(1.12) translate(1.5%, 1%); }
+        to { transform: scale(1) translate(0, 0); }
+    }
+
+    @keyframes fxGlint {
+        0%, 55% { background-position: 130% 0; }
+        100% { background-position: -130% 0; }
+    }
+
+    @keyframes fxShimmer {
+        from { background-position: 0% 0; }
+        to { background-position: -220% 0; }
+    }
+
+    @keyframes fxPulse {
+        0% { box-shadow: 0 0 0 0 rgba(199, 122, 68, .7); }
+        70%, 100% { box-shadow: 0 0 0 14px rgba(199, 122, 68, 0); }
+    }
+
+    @keyframes fxPulseLight {
+        0% { box-shadow: 0 0 0 0 rgba(250, 248, 245, .55); }
+        70%, 100% { box-shadow: 0 0 0 18px rgba(250, 248, 245, 0); }
+    }
+
+    @keyframes fxPulseCopper {
+        0% { box-shadow: 0 0 0 0 rgba(199, 122, 68, .6); }
+        70%, 100% { box-shadow: 0 0 0 16px rgba(199, 122, 68, 0); }
+    }
+
+    @keyframes fxMarquee {
+        from { transform: translateX(0); }
+        to { transform: translateX(-50%); }
+    }
+
+    @keyframes fxFloat {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-7px); }
+    }
+
+    @keyframes fxTag {
+        0%, 100% { box-shadow: 0 0 0 0 rgba(199, 122, 68, 0); }
+        50% { box-shadow: 0 0 16px 2px rgba(199, 122, 68, .55); }
+    }
+
+    @keyframes fxTwinkle {
+        0%, 100% { text-shadow: none; }
+        50% { text-shadow: 0 0 14px rgba(199, 122, 68, .95); letter-spacing: 6px; }
+    }
+
+    @keyframes fxRing {
+        0% { transform: scale(1); opacity: .7; }
+        100% { transform: scale(2.1); opacity: 0; }
+    }
+
+    @keyframes fxDrift {
+        from { transform: translate3d(-6%, -4%, 0) rotate(0deg); }
+        to { transform: translate3d(6%, 5%, 0) rotate(14deg); }
+    }
+
+    @keyframes fxLine {
+        from { background-position: 0% 0; }
+        to { background-position: -200% 0; }
+    }
+
+    @keyframes fxSpark {
+        0%, 100% { opacity: 0; transform: scale(.3) rotate(0deg); }
+        45%, 55% { opacity: .95; transform: scale(1) rotate(90deg); }
+    }
+
+    @keyframes fxTrail {
+        from { opacity: .95; transform: translate(-50%, -50%) scale(1) rotate(0deg); }
+        to { opacity: 0; transform: translate(-50%, calc(-50% + 22px)) scale(.2) rotate(140deg); }
+    }
+
+    @keyframes fxHalo {
+        0%, 100% {
+            box-shadow: 0 0 0 2px rgba(255, 255, 255, .95), 0 0 0 12px rgba(255, 255, 255, .18), 0 14px 48px rgba(255, 255, 255, .28);
+        }
+        50% {
+            box-shadow: 0 0 0 2px rgba(255, 255, 255, 1), 0 0 0 20px rgba(255, 255, 255, .06), 0 0 60px rgba(255, 255, 255, .52);
+        }
+    }
+}
+
+/* ---------- Ajustes de celular ---------- */
+@media (max-width: 850px) {
+    .marquee {
+        padding: 12px 0;
+    }
+}
+
+@media (max-width: 600px) {
+    .cta::before {
+        inset: -20%;
+    }
+}
+
+
+/* =====================================================================
+   DESTAQUE DO TOPO — carrossel, benefícios e faixa deslizante
+   ===================================================================== */
+
+/* ---------- Carrossel: mais luz e mais profundidade ---------- */
+.hero-carousel::before {
+    content: "";
+    position: absolute;
+    inset: auto auto -30% -10%;
+    width: 70%;
+    height: 80%;
+    z-index: 3;
+    pointer-events: none;
+    background: radial-gradient(closest-side, rgba(199, 122, 68, .34), transparent 72%);
+    mix-blend-mode: screen;
+}
+
+.carousel-slide img {
+    scale: 1.06;
+    translate: calc(var(--px, 0) * 14px) calc(var(--py, 0) * 9px);
+    transition: translate .5s ease-out;
+}
+
+.carousel-overlay {
+    translate: calc(var(--px, 0) * -9px) calc(var(--py, 0) * -5px);
+    transition: translate .5s ease-out;
+}
+
+/* Título em linhas (separadas pelo effects.js) */
+.carousel-content h2.fx-split {
+    font-size: clamp(50px, 7vw, 100px);
+    letter-spacing: -2.5px;
+    filter: drop-shadow(0 6px 28px rgba(0, 0, 0, .5));
+}
+
+.fx-line {
+    display: block;
+    overflow: hidden;
+    padding: 0 .06em .1em 0;
+    margin-bottom: -.1em;
+}
+
+.fx-line > span {
+    display: block;
+    background: linear-gradient(100deg, #fff 38%, #ffe2b5 50%, #fff 62%);
+    background-size: 260% 100%;
+    background-position: 130% 0;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+
+/* Rótulo e subtítulo mais legíveis */
+.carousel-label {
+    font-size: 11px;
+    color: #e6d3ab;
+}
+
+.carousel-content p {
+    font-size: clamp(15px, 1.5vw, 18px);
+}
+
+/* Botão do topo maior, com anel de luz */
+.carousel-button {
+    min-height: 54px;
+    padding: 16px 32px;
+    font-size: 13px;
+    letter-spacing: .02em;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .35);
+}
+
+/* Contador 01 / 03 */
+.fx-counter {
+    position: absolute;
+    right: 9%;
+    bottom: 22px;
+    z-index: 5;
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    color: var(--white);
+    font-family: var(--font-title);
+    pointer-events: none;
+}
+
+.fx-counter b {
+    font-size: 44px;
+    font-weight: 500;
+    line-height: 1;
+}
+
+.fx-counter span {
+    font-size: 15px;
+    color: var(--fx-champagne);
+}
+
+/* Barra de tempo no indicador ativo */
+.carousel-dot {
+    position: relative;
+    overflow: hidden;
+}
+
+.carousel-dot.active::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    transform-origin: 0 50%;
+    background: var(--fx-copper);
+}
+
+/* Partículas de luz (bokeh) */
+.fx-bokeh {
+    position: absolute;
+    bottom: -20px;
+    z-index: 3;
+    border-radius: 50%;
+    pointer-events: none;
+    background: radial-gradient(circle, rgba(255, 236, 200, .95), rgba(236, 190, 130, .35) 55%, transparent 72%);
+    opacity: 0;
+}
+
+/* ---------- Barra de benefícios ---------- */
+.benefits {
+    position: relative;
+    gap: 18px;
+    padding: 34px 8%;
+    background:
+        radial-gradient(ellipse at 15% 0%, rgba(199, 122, 68, .22), transparent 55%),
+        radial-gradient(ellipse at 90% 100%, rgba(188, 169, 133, .14), transparent 55%),
+        #000;
+}
+
+.benefits::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--fx-copper), #fff1d6, var(--fx-copper), transparent);
+    background-size: 200% 100%;
+}
+
+.benefit {
+    padding: 16px 20px;
+    gap: 18px;
+    border: 1px solid rgba(188, 169, 133, .22);
+    border-radius: 16px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, .07), rgba(255, 255, 255, .015));
+    backdrop-filter: blur(6px);
+    transition: transform .45s var(--fx-ease), border-color .35s ease, box-shadow .45s ease;
+}
+
+.benefit:hover {
+    transform: translateY(-5px);
+    border-color: rgba(199, 122, 68, .85);
+    box-shadow: 0 14px 40px rgba(199, 122, 68, .22);
+}
+
+.benefit-icon {
+    min-width: 54px;
+    height: 54px;
+    font-size: 19px;
+    border-color: rgba(199, 122, 68, .7) !important;
+    box-shadow: 0 0 18px rgba(199, 122, 68, .28), inset 0 0 12px rgba(199, 122, 68, .2);
+}
+
+.benefit h3 {
+    font-size: 15px;
+    margin-bottom: 4px;
+    letter-spacing: .01em;
+}
+
+.benefit p {
+    font-size: 12.5px;
+    color: #d8cfbd;
+}
+
+/* ---------- Faixa deslizante maior, com bordas suaves ---------- */
+.marquee {
+    padding: 20px 0;
+    font-size: clamp(22px, 3vw, 34px);
+    /* Paleta 2026: faixa com terracota uniforme, sem degradê branco nas extremidades. */
+    background: #C77A44;
+    border-block: 0;
+    box-shadow: none;
+    -webkit-mask-image: none;
+    mask-image: none;
+}
+
+.marquee-track span {
+    gap: 34px;
+    padding-right: 34px;
+}
+
+/* ---------- Movimento do destaque ---------- */
+@media (prefers-reduced-motion: no-preference) {
+
+    .hero-carousel::before {
+        animation: fxBreathe 6s ease-in-out infinite alternate;
+    }
+
+    /* Linhas do título sobem uma a uma, e a luz passa pelas letras */
+    .carousel-slide.active .carousel-content h2.fx-split {
+        animation: none;
+    }
+
+    .carousel-slide.active .fx-line > span {
+        animation:
+            fxLineUp 1.05s var(--fx-ease) calc(.25s + var(--l, 0) * .16s) both,
+            fxLetterGlint 4.5s ease-in-out calc(1.4s + var(--l, 0) * .25s) infinite;
+    }
+
+    .carousel-slide.active .carousel-button {
+        animation:
+            fxRise .9s var(--fx-ease) .75s both,
+            fxPulseLight 2.8s ease-out 1.8s infinite;
+    }
+
+    /* Contador e barra de tempo */
+    .carousel-dot.active::after {
+        animation: fxDotFill 5s linear both;
+    }
+
+    .hero-carousel:hover .carousel-dot.active::after {
+        animation-play-state: paused;
+    }
+
+    .fx-counter b {
+        animation: fxCount .7s var(--fx-ease) both;
+    }
+
+    /* Bokeh subindo devagar */
+    .fx-bokeh {
+        animation: fxBokeh var(--fx-dur, 9s) ease-in-out var(--fx-delay, 0s) infinite;
+    }
+
+    .benefits::before {
+        animation: fxLine 6s linear infinite;
+    }
+
+    @keyframes fxLineUp {
+        from { transform: translateY(110%); }
+        to { transform: translateY(0); }
+    }
+
+    @keyframes fxLetterGlint {
+        0%, 35% { background-position: 130% 0; }
+        100% { background-position: -130% 0; }
+    }
+
+    @keyframes fxBreathe {
+        from { opacity: .55; transform: scale(.92); }
+        to { opacity: 1; transform: scale(1.08); }
+    }
+
+    @keyframes fxDotFill {
+        from { transform: scaleX(0); }
+        to { transform: scaleX(1); }
+    }
+
+    @keyframes fxCount {
+        from { opacity: 0; transform: translateY(14px); }
+        to { opacity: 1; transform: none; }
+    }
+
+    @keyframes fxBokeh {
+        0% { opacity: 0; transform: translate3d(0, 0, 0) scale(.6); }
+        20% { opacity: var(--fx-o, .7); }
+        80% { opacity: var(--fx-o, .7); }
+        100% { opacity: 0; transform: translate3d(var(--fx-dx, 20px), -560px, 0) scale(1.15); }
+    }
+}
+
+@media (max-width: 850px) {
+    .carousel-content h2.fx-split {
+        font-size: clamp(40px, 11vw, 64px);
+        letter-spacing: -1.5px;
+    }
+
+    .fx-counter {
+        right: 6%;
+    }
+
+    .fx-counter b {
+        font-size: 30px;
+    }
+
+    .benefit {
+        padding: 14px 16px;
+    }
+
+    .marquee {
+        padding: 14px 0;
+    }
+}
+
+@media (max-width: 600px) {
+    .carousel-button {
+        padding: 14px 24px;
+    }
+
+    /* No celular as setas ocupam esse canto */
+    .fx-counter {
+        display: none;
+    }
+}
