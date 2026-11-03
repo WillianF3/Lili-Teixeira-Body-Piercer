@@ -1,0 +1,66 @@
+/* CARROSSEL PRINCIPAL: ajustes de composição, movimento e adaptação para telas pequenas. */
+
+/* Lili Teixeira — carrossel premium, versão consolidada.
+   Importado depois de style.css e effects.css para manter as funções existentes. */
+:root { --hero-gold:#e8ba7a; --hero-gold-light:#ffe2b4; }
+.hero-carousel {
+  isolation:isolate; min-height:clamp(520px,76vh,810px);
+  background:#050910;
+}
+.hero-carousel .carousel-slide { transform:scale(1.025); transition:opacity .8s ease,visibility .8s ease,transform 7s ease; }
+.hero-carousel .carousel-slide.active { transform:scale(1); }
+.hero-carousel .carousel-slide img { object-fit:cover; object-position:center; filter:brightness(.9); }
+.hero-carousel .carousel-slide.active img { animation: liliHeroZoom 11s ease-in-out infinite alternate; }
+.hero-carousel .carousel-slide::after {
+  content:""; position:absolute; inset:0; z-index:0; pointer-events:none;
+  background:
+    linear-gradient(90deg,rgba(1,4,11,.93) 0%,rgba(2,7,16,.82) 30%,rgba(2,7,16,.27) 70%,rgba(2,7,16,.12) 100%),
+    radial-gradient(circle at 70% 47%,rgba(222,170,96,.13),transparent 53%),
+    linear-gradient(0deg,rgba(0,0,0,.60),transparent 35%);
+}
+.hero-carousel .carousel-slide::before {
+  content:""; position:absolute;z-index:1;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,rgba(0,0,0,.2),transparent 30%,transparent 65%,rgba(0,0,0,.22));
+}
+.hero-carousel .carousel-overlay { z-index:2; left:clamp(40px,8.5vw,154px); max-width:min(620px,78vw); }
+.hero-carousel .carousel-content { max-width:640px; animation:none; }
+.hero-carousel .carousel-slide.active .carousel-content { animation:liliHeroReveal .75s ease both; }
+.hero-carousel .carousel-content h1,
+.hero-carousel .carousel-content h2 { font-family:'Playfair Display',Georgia,serif; font-size:clamp(48px,6.2vw,90px); font-weight:500; line-height:1.04; letter-spacing:-.045em; color:#faf8f5; text-wrap:balance; margin:0 0 20px; text-shadow:0 4px 22px rgba(0,0,0,.32); }
+.hero-carousel .carousel-content h1 em,
+.hero-carousel .carousel-content h2 em { color:var(--hero-gold-light); font-weight:500; }
+.hero-carousel .carousel-label { color:var(--hero-gold); font-size:11px; letter-spacing:.31em; gap:13px; text-transform:uppercase; margin:0 0 26px; }
+.hero-carousel .carousel-label::before { width:36px;flex-basis:36px;background:var(--hero-gold); }
+.hero-carousel .carousel-content p { color:#ded6ce; line-height:1.8; font-size:clamp(14px,1.25vw,17px); margin:0 0 30px; max-width:470px; }
+.hero-carousel .carousel-button { position:relative; isolation:isolate; overflow:hidden; gap:12px; background:linear-gradient(115deg,#f9dfb5,#d6a36c); color:#18120d; border:1px solid #f2cea0; border-radius:50px; min-height:48px; padding:15px 28px; font-weight:700; font-size:13px; box-shadow:0 11px 32px rgba(192,128,66,.24); transition:transform .25s,box-shadow .25s,background .25s; }
+.hero-carousel .carousel-button::before { content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 20%,rgba(255,255,255,.55) 50%,transparent 80%);transform:translateX(-120%);transition:transform .7s;pointer-events:none;z-index:-1; }
+.hero-carousel .carousel-button:hover { background:linear-gradient(115deg,#ffe4bb,#dbad7b);color:#18120d;transform:translateY(-3px);box-shadow:0 18px 40px rgba(192,128,66,.38); }
+.hero-carousel .carousel-button:hover::before { transform:translateX(120%); }
+.hero-carousel .carousel-control { width:54px;height:54px;border:1px solid rgba(255,255,255,.5);background:rgba(11,12,18,.46);backdrop-filter:blur(10px);color:#fff; transition:background .25s,border-color .25s,box-shadow .25s,transform .25s; }
+.hero-carousel .carousel-control:hover { background:rgba(218,165,101,.28);border-color:var(--hero-gold);box-shadow:0 0 27px rgba(218,165,101,.4);color:#fff;transform:translateY(-50%) scale(1.05); }
+.hero-carousel .carousel-control:focus-visible,
+.hero-carousel .carousel-dot:focus-visible,
+.hero-carousel .carousel-button:focus-visible {outline:3px solid #f8d59c;outline-offset:4px;}
+.hero-carousel .carousel-dots {left:clamp(40px,8.5vw,154px);bottom:34px;gap:10px;}
+.hero-carousel .carousel-dot {width:27px;height:4px;border-radius:8px;background:rgba(255,255,255,.4);transition:width .35s,background .35s;}
+.hero-carousel .carousel-dot.active {width:60px;background:var(--hero-gold-light);box-shadow:0 0 14px rgba(240,189,118,.45);}
+.benefits {background:#080807;border-top:1px solid rgba(222,175,102,.24);}
+.benefits .benefit {transition:transform .25s ease;}
+.benefits .benefit:hover {transform:translateY(-3px);}
+@keyframes liliHeroZoom {from{transform:scale(1)}to{transform:scale(1.055)}}
+@keyframes liliHeroReveal {from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:768px){
+ .hero-carousel {min-height:600px;height:min(760px,calc(100svh - 64px));}
+ .hero-carousel .carousel-slide::after {background:linear-gradient(0deg,rgba(3,5,11,.95) 0%,rgba(3,5,11,.65) 46%,rgba(3,5,11,.12) 100%);}
+ .hero-carousel .carousel-overlay {left:24px;right:24px;top:auto;bottom:92px;transform:none;max-width:none;}
+ .hero-carousel .carousel-content h1,.hero-carousel .carousel-content h2 {font-size:clamp(40px,10vw,62px);line-height:1.05;}
+ .hero-carousel .carousel-content p {font-size:14px;max-width:34ch;line-height:1.65;}
+ .hero-carousel .carousel-control {width:43px;height:43px;top:42%;}
+ .hero-carousel .carousel-prev {left:14px;}.hero-carousel .carousel-next{right:14px;}
+ .hero-carousel .carousel-dots {left:24px;bottom:34px;}
+}
+@media(max-width:390px){.hero-carousel .carousel-overlay{left:19px;right:19px}.hero-carousel .carousel-label{letter-spacing:.18em;font-size:9px}.hero-carousel .carousel-content h1,.hero-carousel .carousel-content h2{font-size:40px}}
+@media(prefers-reduced-motion:reduce){
+ .hero-carousel .carousel-slide.active img,.hero-carousel .carousel-slide.active .carousel-content {animation:none!important;}
+ .hero-carousel .carousel-slide,.hero-carousel .carousel-button,.hero-carousel .carousel-dot {transition:none!important;}
+}
